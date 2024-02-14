@@ -46,7 +46,7 @@ export default function ViewSubmittedApplicationAdmin() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   return (
     <>
@@ -174,7 +174,7 @@ export default function ViewSubmittedApplicationAdmin() {
                   {applicationInfo.date_of_transaction}
                 </dd>
               </div>
-              {applicationInfo.applying_for == "Regular/External/Part Time" ? (<>
+              {applicationInfo.applying_for ===  "Regular/External/Part Time" ? (<>
                 <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
                     Whether you want to apply for interdisciplinary program?
@@ -201,7 +201,7 @@ export default function ViewSubmittedApplicationAdmin() {
                     {applicationInfo.mode_of_app}
                   </dd>
                 </div>
-                {applicationInfo.department_name == "Computer Science and Engineering" ?
+                {applicationInfo.department_name ===  "Computer Science and Engineering" ?
                   (<>
                     <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                       <dt className="text-sm font-medium text-gray-500">
@@ -293,7 +293,7 @@ export default function ViewSubmittedApplicationAdmin() {
                     </div>
                   </dd>
                 </div>
-              </>) : applicationInfo.applying_for == "Direct" ? (<>
+              </>) : applicationInfo.applying_for ===  "Direct" ? (<>
                 <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
                     Have you Finished your Bachelor's degree:
@@ -394,7 +394,7 @@ export default function ViewSubmittedApplicationAdmin() {
                     </div>
                   </dd>
                 </div>
-              </>) : applicationInfo.applying_for == "Staff Member" ? (<>
+              </>) : applicationInfo.applying_for ===  "Staff Member" ? (<>
                 <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
                     Area of Research (as per advertisement)
@@ -636,7 +636,7 @@ export default function ViewSubmittedApplicationAdmin() {
                   Qualifying Examination
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {applicationInfo.department_name == "Computer Science and Engineering" ? (<>GATE</>) : (<>{applicationInfo.qualifying_examination_1}</>)}
+                  {applicationInfo.department_name ===  "Computer Science and Engineering" ? (<>GATE</>) : (<>{applicationInfo.qualifying_examination_1}</>)}
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -678,7 +678,7 @@ export default function ViewSubmittedApplicationAdmin() {
                   Qualifying Examination
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {applicationInfo.department_name == "Computer Science and Engineering" ? (<>GATE</>) : (<>{applicationInfo.qualifying_examination_2}</>)}
+                  {applicationInfo.department_name ===  "Computer Science and Engineering" ? (<>GATE</>) : (<>{applicationInfo.qualifying_examination_2}</>)}
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -876,7 +876,7 @@ export default function ViewSubmittedApplicationAdmin() {
                   {applicationInfo.total_years_of_service}
                 </dd>
               </div>
-              {applicationInfo.department_name == "Computer Science and Engineering" ?
+              {applicationInfo.department_name ===  "Computer Science and Engineering" ?
                 (<>
                   <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className="text-sm font-medium text-gray-500">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SignIn from "./SignIn";
-import Otp from "./Otp";
+// import Otp from "./Otp";
 import { setUserSession } from "./Sessions";
 import { setAdminType } from "../Admin/AdminTypes";
 import { useNavigate, Link } from "react-router-dom";

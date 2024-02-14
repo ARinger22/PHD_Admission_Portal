@@ -37,7 +37,7 @@ export default function ApplicantHomePage() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
 
 
@@ -84,7 +84,7 @@ export default function ApplicantHomePage() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
 
 

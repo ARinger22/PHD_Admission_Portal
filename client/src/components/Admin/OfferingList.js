@@ -12,8 +12,8 @@ import { UserGroupIcon } from "@heroicons/react/solid";
 import noDataPic from "../../images/Asset 8.svg";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import screenSpinner from "../../images/2300-spinner.gif";
-import PublishAllResultsModal from "./PublishAllResultsModal";
-import UnpublishAllResultsModal from "./UnpublishAllResultsModal";
+// import PublishAllResultsModal from "./PublishAllResultsModal";
+// import UnpublishAllResultsModal from "./UnpublishAllResultsModal";
 import OpenAllOfferings from "./OpenAllOfferings";
 import CloseAllOfferings from "./CloseAllOfferings";
 import { getAdminType } from "./AdminTypes";
@@ -58,7 +58,7 @@ export default function OfferingList() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   function range(start, end) {
     return Array(end - start + 1)

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Tooltip } from "@mui/material";
@@ -21,18 +21,18 @@ const style = {
   borderRadius: 5,
 };
 
-const customStyles = {
-  control: (base, state) => ({
-    ...base,
-    fontSize: "14px",
-    lineHeight: "20px",
-    borderRadius: "8px",
-    padding: "5px",
-    outline: state.isFocused ? "none" : "",
-    border: "1px solid rgb(229 231 235)",
-    boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-  }),
-};
+// const customStyles = {
+//   control: (base, state) => ({
+//     ...base,
+//     fontSize: "14px",
+//     lineHeight: "20px",
+//     borderRadius: "8px",
+//     padding: "5px",
+//     outline: state.isFocused ? "none" : "",
+//     border: "1px solid rgb(229 231 235)",
+//     boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+//   }),
+// };
 
 
 

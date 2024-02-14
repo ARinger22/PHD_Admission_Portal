@@ -20,7 +20,7 @@ function AdmissionCycles() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentCycles, setCurrentCycles] = useState([]);
   const [brochure, setBrochure] = useState("");
-  const [ranklist, setRanklist] = useState("");
+  const ranklist = useState("");
   const [fees, setFees] = useState(["0", "0", "0", "0", "0", "0"]);
   const empty_cycle = {
     name: "",
@@ -75,16 +75,16 @@ function AdmissionCycles() {
     } else obj[prop[0]] = value;
   }
 
-  const handleFileSubmit = (e, setVariable) => {
-    const file = e.target.files[0];
+  // const handleFileSubmit = (e, setVariable) => {
+  //   const file = e.target.files[0];
 
-    if (file.type !== "application/pdf") {
-      e.target.value = null;
-      alert("File format not followed! Allowed formats: .pdf");
-      return;
-    }
-    setVariable(file);
-  };
+  //   if (file.type !== "application/pdf") {
+  //     e.target.value = null;
+  //     alert("File format not followed! Allowed formats: .pdf");
+  //     return;
+  //   }
+  //   setVariable(file);
+  // };
 
   const handleSubmit = () => {
     setIsLoading(true);
@@ -175,7 +175,7 @@ function AdmissionCycles() {
         }
       })
       .catch();
-  }, []);
+  }, [navigate]);
 
   return (
     <div>

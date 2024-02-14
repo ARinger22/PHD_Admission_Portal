@@ -10,13 +10,13 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
 import screenSpinner from "../../images/2300-spinner.gif";
 import ExportExcelModal from "./ExportExcelModal";
-import UploadResultModal from "./UploadResultModal";
-import PublishResultsModal from "./PublishResultsModal";
-import PublishResultsModalFaculty from "./PublishResultsModalFaculty";
+// import UploadResultModal from "./UploadResultModal";
+// import PublishResultsModal from "./PublishResultsModal";
+// import PublishResultsModalFaculty from "./PublishResultsModalFaculty";
 import DeleteApplicationModal from "./DeleteApplicationModal";
-import { getAdminType } from "./AdminTypes";
-import AssessmentIcon from "@mui/icons-material/Assessment";
-import MeritListGeneration from "./MeritListGeneration";
+// import { getAdminType } from "./AdminTypes";
+// import AssessmentIcon from "@mui/icons-material/Assessment";
+// import MeritListGeneration from "./MeritListGeneration";
 
 export default function OfferingList() {
   const navigate = useNavigate();
@@ -32,9 +32,9 @@ export default function OfferingList() {
     useState(0);
   const [searchType, setSearchType] = useState("full_name");
   const [textToSearch, setTextToSearch] = useState("");
-  const [isGeneratingMeritList, setIsGeneratingMeritList] = useState(false);
+  // const [isGeneratingMeritList, setIsGeneratingMeritList] = useState(false);
   const params = useParams();
-  const admin_type = getAdminType();
+  // const admin_type = getAdminType();
 
   useEffect(() => {
     axios
@@ -61,7 +61,7 @@ export default function OfferingList() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   function range(start, end) {
     return Array(end - start + 1)

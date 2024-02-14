@@ -44,7 +44,7 @@ export default function Review(props) {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="relative flex flex-col sm:justify-center items-center mb-6 mt-6">
@@ -89,7 +89,7 @@ export default function Review(props) {
         </div>
         <div className="border-t border-gray-200">
           <dl>
-            {props.offering.offering_type == "Regular/External/Part Time" ? (<>
+            {props.offering.offering_type === "Regular/External/Part Time" ? (<>
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
                   Whether you want to apply for interdisciplinary program?
@@ -98,7 +98,7 @@ export default function Review(props) {
                   {props.details[42]}
                 </dd>
               </div>
-              {props.details[42] == "YES" ? (<>
+              {props.details[42] === "YES" ? (<>
                 <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
                     Name of interdisciplinary department
@@ -116,7 +116,7 @@ export default function Review(props) {
                   {props.details[43]}
                 </dd>
               </div>
-              {props.offering.department == "Computer Science and Engineering" ?
+              {props.offering.department === "Computer Science and Engineering" ?
                 (<>
                   <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className="text-sm font-medium text-gray-500">
@@ -183,7 +183,7 @@ export default function Review(props) {
                 </dd>
               </div>
 
-            </>) : props.offering.offering_type == "Direct" ? (<>
+            </>) : props.offering.offering_type === "Direct" ? (<>
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
                   Have you Finished your Bachelor's degree:
@@ -192,7 +192,7 @@ export default function Review(props) {
                   {props.details[50]}
                 </dd>
               </div>
-              {props.offering.department == "Computer Science and Engineering" ?
+              {props.offering.department === "Computer Science and Engineering" ?
                 (<>
                   <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className="text-sm font-medium text-gray-500">
@@ -258,7 +258,7 @@ export default function Review(props) {
                     </dd>
                   </div>
                 </>)}
-            </>) : props.offering.offering_type == "Staff Member" ? (<>
+            </>) : props.offering.offering_type === "Staff Member" ? (<>
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
                   Area of Research (as per advertisement)
@@ -442,7 +442,7 @@ export default function Review(props) {
                 Qualifying Examination
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {props.offering.department == "Computer Science and Engineering" ? (<>GATE</>) : (<>{props.details[5]}</>)}
+                {props.offering.department === "Computer Science and Engineering" ? (<>GATE</>) : (<>{props.details[5]}</>)}
               </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -484,7 +484,7 @@ export default function Review(props) {
                 Qualifying Examination
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {props.offering.department == "Computer Science and Engineering" ? (<>GATE</>) : (<>{props.details[11]}</>)}
+                {props.offering.department === "Computer Science and Engineering" ? (<>GATE</>) : (<>{props.details[11]}</>)}
               </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -660,7 +660,7 @@ export default function Review(props) {
                 {props.details[35]}
               </dd>
             </div>
-            {props.offering.department == "Computer Science and Engineering" ?
+            {props.offering.department === "Computer Science and Engineering" ?
               (<>
                 <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">

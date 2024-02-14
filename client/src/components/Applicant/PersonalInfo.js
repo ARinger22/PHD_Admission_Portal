@@ -422,7 +422,7 @@ export default function PersonalInfo(props) {
                                   <option value="ST">ST</option>
                                 </select>
                               </div>
-                              {props.localProfileInfo.category != 'GEN' ? (
+                              {props.localProfileInfo.category !==  'GEN' ? (
                                 <>
                                   <div className="col-span-6 sm:col-span-3">
                                     <label
@@ -556,7 +556,7 @@ export default function PersonalInfo(props) {
                                   <option value="NO">NO</option>
                                 </select>
                               </div>
-                              {props.localProfileInfo.is_pwd == 'YES' ? (
+                              {props.localProfileInfo.is_pwd === 'YES' ? (
                                 <>
                                   {/* pwd type */}
                                   <div className="col-span-6 sm:col-span-3">
