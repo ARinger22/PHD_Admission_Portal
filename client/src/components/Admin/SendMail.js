@@ -38,7 +38,7 @@ export default function SendMail() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
 
   const sendEmail = (fileurl) => {

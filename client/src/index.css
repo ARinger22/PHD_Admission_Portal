@@ -30,4 +30,10 @@ code {
   .do-not-print-me {
     display: none;
   }
+  /* Use print-color-adjust instead of color-adjust */
+  @supports ((-webkit-color-adjust: exact) or (color-adjust: exact)) {
+    .your-selector {
+      print-color-adjust: exact;
+    }
+  }
 }

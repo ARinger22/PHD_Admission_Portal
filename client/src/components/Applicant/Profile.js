@@ -203,7 +203,7 @@ export default function Profile() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   const handleLocalChange = (event, key) => {
     let copy = { ...localProfileInfo };

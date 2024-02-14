@@ -74,12 +74,12 @@ function ApplicantionDetails() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   console.log(offering);
   const init_application_details = () => {
     const array = Array.from({ length: 66 }, () => "");
-    if (offering.department == "Computer Science and Engineering") {
+    if (offering.department === "Computer Science and Engineering") {
       array[5] = "GATE";
       array[11] = "GATE";
     }
@@ -159,7 +159,7 @@ function ApplicantionDetails() {
   function handleApplicationSubmit() {
     setIsLoading(true);
     const formData = new FormData();
-    if (offering.department == "Computer Science and Engineering") {
+    if (offering.department === "Computer Science and Engineering") {
       applicant_details[5] = "GATE";
       applicant_details[11] = "GATE";
     }

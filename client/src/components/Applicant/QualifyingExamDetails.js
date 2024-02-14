@@ -1,26 +1,26 @@
 import React from "react";
 import crossPic from "../../images/red_cross.svg";
-import HelpIcon from "@mui/icons-material/Help";
-import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
-import { styled } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
+// import HelpIcon from "@mui/icons-material/Help";
+// import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+// import { styled } from "@mui/material/styles";
+// import Typography from "@mui/material/Typography";
 
-const HtmlTooltip = styled(({ className, ...props }) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: "#f5f5f9",
-    color: "rgba(0, 0, 0, 0.87)",
-    maxWidth: 220,
-    fontSize: theme.typography.pxToRem(12),
-    border: "1px solid #dadde9",
-  },
-}));
+// const HtmlTooltip = styled(({ className, ...props }) => (
+//   <Tooltip {...props} classes={{ popper: className }} />
+// ))(({ theme }) => ({
+//   [`& .${tooltipClasses.tooltip}`]: {
+//     backgroundColor: "#f5f5f9",
+//     color: "rgba(0, 0, 0, 0.87)",
+//     maxWidth: 220,
+//     fontSize: theme.typography.pxToRem(12),
+//     border: "1px solid #dadde9",
+//   },
+// }));
 
 function QualifyingExamDetails(props) {
-  const date = new Date();
-  const max_year = date.getFullYear();
-  const min_year = max_year - 2;
+  // const date = new Date();
+  // const max_year = date.getFullYear();
+  // const min_year = max_year - 2;
 
   return (
     <div>
@@ -33,7 +33,7 @@ function QualifyingExamDetails(props) {
                   Qualifying Examination
                 </h3>
                 <p className="ml-5 text-left mt-1 text-gray-600 text-base leading-relaxed">
-                  {props.offering.department == "Computer Science and Engineering" ?
+                  {props.offering.department === "Computer Science and Engineering" ?
                     (<>
                       (Two most recent GATE scores)</>) :
                     (<>
@@ -54,7 +54,7 @@ function QualifyingExamDetails(props) {
                         >
                           Qualifying Examination
                         </label>
-                        {props.offering.department == "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
+                        {props.offering.department === "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
                           (<> <input
                             id="qualifying_examination_1"
                             value="GATE"
@@ -75,7 +75,7 @@ function QualifyingExamDetails(props) {
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
-                        {props.offering.department == "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
+                        {props.offering.department === "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
                           (<>
                             <label
                               htmlFor="branch_code_1"
@@ -229,7 +229,7 @@ function QualifyingExamDetails(props) {
                         >
                           Qualifying Examination
                         </label>
-                        {props.offering.department == "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
+                        {props.offering.department === "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
                           (<> <input
                             id="qualifying_examination_2"
                             value="GATE"
@@ -250,7 +250,7 @@ function QualifyingExamDetails(props) {
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
-                        {props.offering.department == "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
+                        {props.offering.department === "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
                           (<>
                             <label
                               htmlFor="branch_code_2"
@@ -403,7 +403,7 @@ function QualifyingExamDetails(props) {
                         >
                           Qualifying Examination
                         </label>
-                        {props.offering.department == "Computer Science and Engineering" ?
+                        {props.offering.department === "Computer Science and Engineering" ?
                           (<> <input
                             id="qualifying_examination_3"
                             name="qualifying_examination_3"

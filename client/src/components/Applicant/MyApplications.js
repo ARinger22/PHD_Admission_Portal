@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { getToken } from "../SignIn_SignUp/Sessions";
 import { useNavigate } from "react-router-dom";
-import ViewModal from "./ViewModal";
+// import ViewModal from "./ViewModal";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import noDataGirlPic from "../../images/no-data-girl.svg";
 import screenSpinner from "../../images/2300-spinner.gif";

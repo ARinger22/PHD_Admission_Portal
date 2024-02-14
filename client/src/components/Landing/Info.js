@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 function Info() {
-  const curr_year = new Date().getFullYear();
+  // const curr_year = new Date().getFullYear();
   const [reqUrls, setReqUrls] = useState({});
   const [isCyclePresent, setIsCyclePresent] = useState(false);
 

@@ -31,7 +31,7 @@ export default function Templates() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="bg-gray-100 p-10">

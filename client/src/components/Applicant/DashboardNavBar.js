@@ -37,7 +37,7 @@ function DashboardNavBar(props) {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   return (
     <>

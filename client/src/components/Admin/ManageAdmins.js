@@ -57,7 +57,7 @@ export default function ManageAdmin() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="p-10 bg-gray-100">

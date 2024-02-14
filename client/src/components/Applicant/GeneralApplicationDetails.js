@@ -12,7 +12,7 @@ function ExperienceAndPublications(props) {
                                 <h3 className="ml-5 mb-2 text-left text-2xl font-medium leading-6 text-gray-900">
                                     General Details
                                 </h3>
-                                {props.offering.department === "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type == "Direct") ?
+                                {props.offering.department === "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
                                     (<>
                                         <p className="ml-5 mb-2 text-left text-sm font-medium leading-6 text-gray-900">** Theory areas of research include algorithms design,approximate algorithms, theory of computation,logic of computer science,complexity theory etc. </p>
                                         <p className="ml-5 mb-2 text-left text-sm font-medium leading-6 text-gray-900">** Systems areas of research includes operating systems,computer systems/architecture,computer network,software architecture,databases etc.</p>
@@ -59,7 +59,7 @@ function ExperienceAndPublications(props) {
                                                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                 ></input>
                                             </div>
-                                            {props.offering.offering_type == "Regular/External/Part Time" ? (<></>) : (<>
+                                            {props.offering.offering_type === "Regular/External/Part Time" ? (<></>) : (<>
                                                 <div className="col-span-6 sm:col-span-3">
                                                     <label
                                                         htmlFor="applying_for"
@@ -254,7 +254,7 @@ function ExperienceAndPublications(props) {
                                                                 </div>
                                                             </div>
                                                         </>)}
-                                                </>) : props.offering.offering_type == "Direct" ? (<>
+                                                </>) : props.offering.offering_type === "Direct" ? (<>
                                                     <div className="col-span-6 sm:col-span-3">
                                                         <label className="block text-sm font-medium text-gray-700">
                                                             Have you Finished your Bachelor's degree:
@@ -390,7 +390,7 @@ function ExperienceAndPublications(props) {
                                                                 </div>
                                                             </div>
                                                         </>)}
-                                                </>) : props.offering.offering_type == "Staff Member" ? (<>
+                                                </>) : props.offering.offering_type === "Staff Member" ? (<>
                                                     <div className="col-span-6 sm:col-span-3"></div>
                                                     <div className="col-span-6 sm:col-span-3">
                                                         <h3
@@ -794,7 +794,7 @@ function ExperienceAndPublications(props) {
                                             </div>
 
                                         </>)
-                                            : props.offering.offering_type == "Staff Member" ? (<>
+                                            : props.offering.offering_type === "Staff Member" ? (<>
                                                 <div className="px-4 bg-white sm:p-6">
                                                     <div className="grid grid-cols-6 gap-6">
                                                         <div className="col-span-full sm:col-span-full">

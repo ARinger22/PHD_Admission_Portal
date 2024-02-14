@@ -10,7 +10,7 @@ function ExperienceAndPublications(props) {
                     <div className="md:grid md:grid-cols-3 md:gap-6">
                         <div className="md:col-span-1">
                             <div className="px-4 sm:px-0">
-                                {props.offering.department == "Computer Science and Engineering" ?
+                                {props.offering.department === "Computer Science and Engineering" ?
                                     (<>
                                         <h3 className="ml-5 mb-2 text-left text-2xl font-medium leading-6 text-gray-900">
                                             Professional Experiences
@@ -108,7 +108,7 @@ function ExperienceAndPublications(props) {
                                                 <label className="block text-sm font-medium text-gray-700">
                                                     Nature of Work
                                                 </label>
-                                                {props.offering.department == "Computer Science and Engineering" ?
+                                                {props.offering.department === "Computer Science and Engineering" ?
                                                     (<>
                                                         <select
                                                             id="nature_of_work_1"
@@ -215,7 +215,7 @@ function ExperienceAndPublications(props) {
                                                 <label className="block text-sm font-medium text-gray-700">
                                                     Nature of Work
                                                 </label>
-                                                {props.offering.department == "Computer Science and Engineering" ?
+                                                {props.offering.department === "Computer Science and Engineering" ?
                                                     (<>
                                                         <select
                                                             id="nature_of_work_2"
@@ -272,7 +272,7 @@ function ExperienceAndPublications(props) {
                                     </div>
 
 
-                                    {props.offering.department == "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
+                                    {props.offering.department === "Computer Science and Engineering" && (props.offering.offering_type === "Regular/External/Part Time" || props.offering.offering_type === "Direct") ?
                                         (<>
                                             <div className="px-4 bg-white sm:p-6">
                                                 <div className="grid grid-cols-6 gap-6">

@@ -39,7 +39,7 @@ export default function ExportExcelModal(props) {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   const onExport = (template_id) => {
     Axios.get("/get-applications-in-excel", {

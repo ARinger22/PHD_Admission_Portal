@@ -56,7 +56,7 @@ export default function MeritListGeneration(props) {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   function onSubmit() {
     setIsLoading(true);

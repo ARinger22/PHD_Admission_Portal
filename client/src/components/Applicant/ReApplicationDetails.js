@@ -22,8 +22,8 @@ function ReApplicantionDetails() {
   const [offering, setOffering] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
-  const [hasFilledHighestGate, setHasFilledHighestGate] = useState("");
-  const [hasGivenMultipleGates, setHasGivenMultipleGates] = useState("");
+  // const [hasFilledHighestGate, setHasFilledHighestGate] = useState("");
+  // const [hasGivenMultipleGates, setHasGivenMultipleGates] = useState("");
   const [isFetching, setIsFetching] = useState(true);
 
   function changeDateFormat() {
@@ -76,11 +76,11 @@ function ReApplicantionDetails() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   const init_application_details = () => {
     const array = Array.from({ length: 66 }, () => "");
-    if (offering.department == "Computer Science and Engineering") {
+    if (offering.department === "Computer Science and Engineering") {
       array[5] = "GATE";
       array[11] = "GATE";
     }
@@ -161,7 +161,7 @@ function ReApplicantionDetails() {
   function handleApplicationSubmit() {
     setIsLoading(true);
     const formData = new FormData();
-    if (offering.department == "Computer Science and Engineering") {
+    if (offering.department === "Computer Science and Engineering") {
       applicant_details[5] = "GATE";
       applicant_details[11] = "GATE";
     }
