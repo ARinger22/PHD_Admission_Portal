@@ -187,9 +187,9 @@ export default function EditAdmissionCycleModal(props) {
             className="mb-0 space-y-4 h-5/6 overflow-y-auto overflow-x-hidden overscroll-none"
           >
             <div className="ml-2 mr-6">
-              <div>
-                <label htmlFor="email" className="text-sm font-medium">
-                  Name
+              <div className="mb-3">
+                <label htmlFor="email" className="flex text-sm font-medium ">
+                  Name <span className="flex flex-col text-red-600 mx-0.5">*</span>
                 </label>
                 <div className="relative mt-1">
                   <input
@@ -202,9 +202,9 @@ export default function EditAdmissionCycleModal(props) {
                   />
                 </div>
               </div>
-              <div>
-                <label htmlFor="password" className="text-sm font-medium">
-                  Duration
+              <div className="mb-3">
+                <label htmlFor="password" className="flex text-sm font-medium">
+                  Duration <span className="flex flex-col text-red-600 mx-0.5">*</span>
                 </label>
                 <div className="relative mt-1 flex">
                   <input
@@ -223,9 +223,9 @@ export default function EditAdmissionCycleModal(props) {
                   />
                 </div>
               </div>
-              <div>
-                <label htmlFor="fees-GEN" className="text-sm font-medium">
-                  Category-wise Application Fees
+              <div className="mb-3">
+                <label htmlFor="fees-GEN" className="flex text-sm font-medium">
+                  Category-wise Application Fees <span className="flex flex-col text-red-600 mx-0.5">*</span>
                 </label>
                 <div className="relative gap-3 flex mt-1">
                   <div>
@@ -347,9 +347,9 @@ export default function EditAdmissionCycleModal(props) {
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="brochure" className="text-sm font-medium">
-                  Brochure for M.Tech. Admissions
+              <div className="mb-3">
+                <label htmlFor="brochure" className="flex text-sm font-medium">
+                  Brochure for M.Tech. Admissions <span className="flex flex-col text-red-600 mx-0.5">*</span>
                 </label>
                 <div className="relative mt-1">
                   <input

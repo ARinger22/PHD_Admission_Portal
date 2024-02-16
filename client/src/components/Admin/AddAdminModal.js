@@ -174,9 +174,9 @@ export default function AddAdminModal() {
                     <div className="col-span-full sm:col-span-full">
                       <label
                         htmlFor="name"
-                        className="text-sm font-medium text-gray-900 block mb-2"
+                        className="flex text-sm font-medium text-gray-900 mb-2"
                       >
-                        Name
+                        Name <span className="flex flex-col text-red-600 mx-0.5">*</span>
                       </label>
                       <input
                         type="text"
@@ -189,9 +189,9 @@ export default function AddAdminModal() {
                     <div className="col-span-full sm:col-span-full">
                       <label
                         htmlFor="email_id"
-                        className="text-sm font-medium text-gray-900 block mb-2"
+                        className="text-sm font-medium text-gray-900 flex mb-2"
                       >
-                        Email Address
+                        Email Address <span className="flex flex-col text-red-600 mx-0.5">*</span>
                       </label>
                       <input
                         type="email"
@@ -216,9 +216,9 @@ export default function AddAdminModal() {
                     <div className="col-span-full sm:col-span-full">
                       <label
                         htmlFor="name"
-                        className="text-sm font-medium text-gray-900 block mb-2"
+                        className="text-sm font-medium text-gray-900 flex mb-2"
                       >
-                        Password
+                        Password <span className="flex flex-col text-red-600 mx-0.5">*</span>
                       </label>
                       <input
                         type="password"
@@ -231,9 +231,9 @@ export default function AddAdminModal() {
                     <div className="col-span-full sm:col-span-full">
                       <label
                         htmlFor="admin_type"
-                        className="text-sm font-medium text-gray-900 block mb-2"
+                        className="text-sm font-medium text-gray-900 flex mb-2"
                       >
-                        Role
+                        Role <span className="flex flex-col text-red-600 mx-0.5">*</span>
                       </label>
 
                       <select

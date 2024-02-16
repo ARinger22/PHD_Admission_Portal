@@ -237,9 +237,9 @@ function AdmissionCycles() {
                           <div>
                             <label
                               htmlFor="email"
-                              className="text-sm font-medium"
+                              className="text-sm font-medium flex"
                             >
-                              Name
+                              Name <span className="flex flex-col text-red-600 mx-0.5">*</span>
                             </label>
                             <div className="relative mt-1">
                               <input
@@ -255,9 +255,9 @@ function AdmissionCycles() {
                           <div>
                             <label
                               htmlFor="password"
-                              className="text-sm font-medium"
+                              className="text-sm font-medium flex"
                             >
-                              Duration
+                              Duration <span className="flex flex-col text-red-600 mx-0.5">*</span>
                             </label>
                             <div className="relative mt-1 flex">
                               <input
@@ -285,9 +285,9 @@ function AdmissionCycles() {
                           <div>
                             <label
                               htmlFor="fees-GEN"
-                              className="text-sm font-medium"
+                              className="text-sm font-medium flex"
                             >
-                              Category-wise Application Fees
+                              Category-wise Application Fees <span className="flex flex-col text-red-600 mx-0.5">*</span>
                             </label>
                             <div className="relative gap-3 flex mt-1">
                               <div>
@@ -418,9 +418,9 @@ function AdmissionCycles() {
                           <div>
                             <label
                               htmlFor="brochure"
-                              className="text-sm font-medium"
+                              className="text-sm font-medium flex"
                             >
-                              Brochure for PHD Admissions
+                              Brochure for PHD Admissions <span className="flex flex-col text-red-600 mx-0.5">*</span>
                             </label>
                             <div className="relative mt-1">
                               <input

@@ -179,8 +179,8 @@ export default function AddTemplateCard(props) {
               </button>
             </div>
             <div>
-              <label htmlFor="name" className="text-sm font-medium">
-                Template Name
+              <label htmlFor="name" className="text-sm font-medium flex">
+                Template Name <span className="flex flex-col text-red-600 mx-0.5">*</span>
               </label>
               <div className="relative mt-1">
                 <input
@@ -206,8 +206,8 @@ export default function AddTemplateCard(props) {
               </div>
             </div>
             <div>
-              <label htmlFor="type" className="text-sm font-medium">
-                Type
+              <label htmlFor="type" className="text-sm font-medium flex">
+                Type <span className="flex flex-col text-red-600 mx-0.5">*</span>
               </label>
               <select
                 id="type"
@@ -220,8 +220,8 @@ export default function AddTemplateCard(props) {
               </select>
             </div>
             <div>
-              <label htmlFor="type" className="text-sm font-medium">
-                Scope
+              <label htmlFor="type" className="text-sm font-medium flex">
+                Scope <span className="flex flex-col text-red-600 mx-0.5">*</span>
               </label>
               <select
                 id="type"
@@ -235,7 +235,7 @@ export default function AddTemplateCard(props) {
               </select>
             </div>
             <div>
-              <label className="text-sm font-medium">Select Columns</label>
+              <label className="text-sm font-medium">Select Columns  </label>
               <div className="h-1" />
               <Select
                 styles={customStyles}
