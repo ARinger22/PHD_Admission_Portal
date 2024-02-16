@@ -146,7 +146,7 @@ export default function UploadExcelModal() {
             <form onSubmit={onSubmit} >
               <div className="px-6 pt-6 pb-2 space-y-6">
                 <div className="bg-white rounded-lg shadow-lg p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Upload Excel file</h3>
+                  <h3 className="flex text-2xl font-bold text-gray-900 mb-4 text-center">Upload Excel file <span className="flex flex-col text-red-600 mx-0.5">*</span> </h3>
                   <div className="flex flex-col items-center">
 
                     <input
