@@ -11,6 +11,7 @@ import WithHeaderFooter from "./components/Landing/WithHeaderFooter";
 import Profile from "./components/Applicant/Profile";
 import SignUpStartPage from "./components/SignIn_SignUp/SignUpStartPage";
 import SignInStartPage from "./components/SignIn_SignUp/SignInStartPage";
+import SignUp from "./components/SignIn_SignUp/SignUp";
 import ForgotPasswordPage from "./components/SignIn_SignUp/ForgotPasswordPage";
 import MyApplications from "./components/Applicant/MyApplications";
 import ApplicantHomePage from "./components/Applicant/ApplicantHomePage";
@@ -20,7 +21,7 @@ import Courses from "./components/Landing/Openings";
 import Info from "./components/Landing/Info";
 import Success from "./components/Applicant/Success";
 import ReApplicationDetails from "./components/Applicant/ReApplicationDetails";
-
+import Otp from "./components/SignIn_SignUp/Otp";
 // Admin
 import AdmissionCycles from "./components/Admin/AdmissionCycles";
 import AdminDashboard from "./components/Admin/AdminDashboard";
@@ -61,6 +62,9 @@ function App() {
   return (
     <BrowserRouter className="font-cereal-font">
       <Routes>
+        <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/otp" element={<Otp />}></Route>
+
         <Route
           path="/home"
           element={
@@ -170,18 +174,18 @@ function App() {
                 <ManageAdmins />
               </PrivateRoute>
             }
-          
+
           />
 
-          
-<Route
+
+          <Route
             path="/SendMail/mail-send/"
             element={
               <PrivateRoute>
                 <SendMail />
               </PrivateRoute>
             }
-          
+
           />
 
           <Route
@@ -237,6 +241,7 @@ function App() {
           <Route path="/faqs" element={<FAQs />}></Route>
           <Route path="/courses" element={<Courses />}></Route>
           <Route path="/info" element={<Info />}></Route>
+          <Route path="/otp" element={<Otp />}></Route>
           <Route
             path="/sign-in"
             element={
@@ -253,7 +258,7 @@ function App() {
               </SpecialRoute>
             }
           />
-                    <Route
+          <Route
             path="/forgot-password"
             element={
               <SpecialRoute>
