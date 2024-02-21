@@ -13,6 +13,8 @@
     "heroku-postbuild": "npm run install-client && npm run install-server"
   },
   "dependencies": {
-    "react-toastify": "^10.0.4"
+    "@popperjs/core": "^2.11.8",
+    "popper.js": "^1.16.1",
+    "react-hook-form": "^7.50.1"
   }
 }
