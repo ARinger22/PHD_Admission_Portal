@@ -11,5 +11,10 @@
     "install-client": "cd client && npm install && npm run build && cd ..",
     "install-server": "cd server && npm install && cd .. ",
     "heroku-postbuild": "npm run install-client && npm run install-server"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "popper.js": "^1.16.1",
+    "react-hook-form": "^7.50.1"
   }
 }

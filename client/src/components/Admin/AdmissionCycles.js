@@ -13,6 +13,9 @@ import background from "../../images/background.jpg";
 import spinner from "../../images/SpinnerWhite.gif";
 import screenSpinner from "../../images/2300-spinner.gif";
 import { getAdminType } from "./AdminTypes";
+// import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+import Alert from '@mui/material/Alert';
 
 function AdmissionCycles() {
   const navigate = useNavigate();
@@ -85,32 +88,79 @@ function AdmissionCycles() {
   //   }
   //   setVariable(file);
   // };
-
-  const handleSubmit = () => {
-    setIsLoading(true);
+  const [showAlert, setShowAlert] = useState(false);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
     const formData = new FormData();
-    formData.append("name", String(cycleInfo["name"]));
-    formData.append("start", String(cycleInfo["duration_start"]));
-    formData.append("end", String(cycleInfo["duration_end"]));
-    formData.append("fees", JSON.stringify(fees));
-    formData.append("make_current", makeCurrent);
+    const name= String(cycleInfo["name"]);
+    const start= String(cycleInfo["duration_start"]);
+    const end= String(cycleInfo["duration_end"]);
+    console.log(name);
+    const myArray = start.split(" ");
+    let stmonth = myArray[0];
+    
+    // const a= months.findIndex(stmonth);
+    let a=0;
+    for(let i=0; i<12; i++){
+      if(months[i]==stmonth){
+        a=i;
+        break;
+      }
+    }
+    // alert(a);
+    const myArray2 = end.split(" ");
+    let endmonth = myArray2[0];
+    // const b= months.findIndex(endmonth);
+    let b=0;
+    for(let i=0; i<12; i++){
+      if(months[i]==endmonth){
+        b=i;
+        break;
+      }
+    }
+    
+    console.log(start);
+    const ay= myArray[1];
+    const by= myArray2[1];
+    // alert(a+" "+b+" "+ay+" "+by);
+    console.log(end);
+    if(ay>by){
+      setShowAlert(true);
+      // alert("Starting time must be before ending time.");
+      // <Alert severity="warning">This is a warning Alert.</Alert>
+    }
+    else if(ay==by && a>b){
+      setShowAlert(true);
+      // alert("Starting time must be before ending time.");
+      // <Alert severity="warning">This is a warning Alert.</Alert>
+    }
+    else{
+      setIsLoading(true);
+      formData.append("name", String(cycleInfo["name"]));
+      formData.append("start", String(cycleInfo["duration_start"]));
+      formData.append("end", String(cycleInfo["duration_end"]));
+      formData.append("fees", JSON.stringify(fees));
+      formData.append("make_current", makeCurrent);
 
-    formData.append("brochure", brochure);
-    formData.append("ranklist", ranklist);
+      formData.append("brochure", brochure);
+      formData.append("ranklist", ranklist);
 
-    Axios.post("/add-admission-cycle", formData, {
-      headers: {
-        Authorization: getToken(),
-      },
-    })
-      .then((response) => {
-        if (response.data === 1) {
-          navigate("/logout");
-        } else {
-          window.location.reload();
-        }
+      Axios.post("/add-admission-cycle", formData, {
+        headers: {
+          Authorization: getToken(),
+        },
       })
-      .catch((err) => console.log(err));
+        .then((response) => {
+          if (response.data === 1) {
+            navigate("/logout");
+          } else {
+            window.location.reload();
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+    
   };
 
   function handleChange(event, key) {
@@ -204,6 +254,7 @@ function AdmissionCycles() {
                   {addAdmissionCycle ? (
                     <div className="mt-5 space-y-4 ">
                       <div className="max-w-lg mx-auto border border-gray-300 rounded-lg shadow-xl bg-white">
+                      
                         <form
                           onSubmit={handleSubmit}
                           className="p-8 mb-0 space-y-4 "
@@ -281,6 +332,12 @@ function AdmissionCycles() {
                                 className="w-full p-4 ml-2 text-sm border-gray-200 rounded-lg shadow-sm-2"
                               />
                             </div>
+                            <div style={{"margin-top":"10px"}}>
+                            {showAlert && (
+                                      <Alert severity="warning">End time should be after start time</Alert>
+                                    )}
+                            </div>
+                            
                           </div>
                           <div>
                             <label

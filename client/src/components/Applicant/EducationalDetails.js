@@ -9,6 +9,7 @@ import spinner from "../../images/SpinnerWhite.gif";
 import crossPic from "../../images/red_cross.svg";
 import CollegeDegreeSection from "./CollegeDegreeSection.js";
 import { PencilIcon } from "@heroicons/react/outline";
+import Alert from '@mui/material/Alert';
 
 const style = {
   position: "absolute",
@@ -53,9 +54,27 @@ export default function EducationalDetails(props) {
     }
     return result;
   }
-
+  const [tenAlert, settenAlert] = useState(false);
+  const [twelAlert, settwelAlert] = useState(false);
+  const [compAlert, setcompAlert] = useState(false);
   const onSubmit = (event) => {
     event.preventDefault();
+    const currentDate = new Date();
+
+    const currentYear = currentDate.getFullYear();
+    if(props.localProfileInfo.year_of_passing_10th>=currentYear){
+      settenAlert(true);
+      return;
+    }
+    if(props.localProfileInfo.year_of_passing_12th>=currentYear){
+      settwelAlert(true);
+      return;
+    }
+    const ch=props.localProfileInfo.year_of_passing_12th-props.localProfileInfo.year_of_passing_10th;
+    if(ch>4 || ch<2){
+      setcompAlert(true);
+      return;
+    }
     setIsLoading(true);
     const formData = new FormData();
     formData.append(
@@ -294,6 +313,7 @@ export default function EducationalDetails(props) {
                             <div className="grid grid-cols-6 gap-6">
                               <div className="col-span-full sm:col-span-full">
                                 <div className="outline rounded outline-[#f3f4f6] px-8 py-8 grid grid-cols-6 gap-6">
+                                
                                   <div className="col-span-4 sm:col-span-2">
                                     <label
                                       htmlFor="degree_10th"
@@ -381,7 +401,7 @@ export default function EducationalDetails(props) {
                                       <option value="CGPA">CGPA</option>
                                     </select>
                                   </div>
-
+                                    
                                   <div className="col-span-4 sm:col-span-2">
                                     <label
                                       htmlFor="percentage_cgpa_value_10th"
@@ -441,10 +461,21 @@ export default function EducationalDetails(props) {
                                         )
                                       }
                                       id="year_of_passing_10th"
-                                      pattern="[1-9]{1}[0-9]{3}"
+                                      pattern="[2-9]{1}[0-9]{3}"
                                       title="4 Digit Year (Example: 2020)"
                                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     />
+                                    
+                                    <div style={{"margin-top":"10px"}}>
+                                    {tenAlert && (
+                                      <Alert severity="warning">Sorry. Only those who have passed 10th standard before the current year are allowed.</Alert>
+                                    )}
+                                    </div>
+                                    <div style={{"margin-top":"10px"}}>
+                                    {compAlert && (
+                                      <Alert severity="warning">Please enter correct graduating year</Alert>
+                                    )}
+                                    </div>
                                   </div>
 
                                   <div className="col-span-full sm:col-span-full">
@@ -724,6 +755,16 @@ export default function EducationalDetails(props) {
                                       title="4 Digit Year (Example: 2020)"
                                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     />
+                                    <div style={{"margin-top":"10px"}}>
+                                    {twelAlert && (
+                                      <Alert severity="warning">Sorry. Only those who have passed 12th standard before the current year are allowed.</Alert>
+                                    )}
+                                    </div>
+                                    <div style={{"margin-top":"10px"}}>
+                                    {compAlert && (
+                                      <Alert severity="warning">Please enter correct graduating year</Alert>
+                                    )}
+                                    </div>
                                   </div>
 
                                   <div className="col-span-full sm:col-span-full">
