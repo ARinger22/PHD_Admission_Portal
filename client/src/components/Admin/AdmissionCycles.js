@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import Calendar from "../../images/calendar_1.svg";
 import Plus from "../../images/plus.svg";
 import DeleteAdmissionCycleModal from "./DeleteAdmissionCycleModal";
@@ -171,32 +171,11 @@ function AdmissionCycles() {
     setCycleInfo(copy);
   }
 
-  const notify = () => toast("enter the start date first!");
+  // const notify = () => toast("enter the start date first!");
 
   const [errorMessage, setErrorMessage] = useState("");
 
   function handleMonthChange(event, key) {
-    if (key === "duration_end") {
-      const startDate = cycleInfo.duration_start;
-      const endDate = event.target.value;
-      const [startMonth, startYear] = startDate.split(" ");
-      const [endYear, endMonth] = endDate.split("-");
-      const startMonthIndex = months.indexOf(startMonth) + 1;
-
-      if (!startDate) {
-        setErrorMessage("Please enter the start date first");
-        return;
-      }
-
-      if (
-        endYear < startYear ||
-        (endYear === startYear && endMonth < startMonthIndex)
-      ) {
-        setErrorMessage("End date should be greater than start date");
-        return;
-      }
-    }
-
     let copy = { ...cycleInfo };
     const date = event.target.value.split("-");
     assign(copy, key, months[parseInt(date[1] - 1)] + " " + date[0]);
