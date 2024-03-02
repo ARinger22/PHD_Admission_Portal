@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import Calendar from "../../images/calendar_1.svg";
 import Plus from "../../images/plus.svg";
 import DeleteAdmissionCycleModal from "./DeleteAdmissionCycleModal";
@@ -169,7 +170,7 @@ function AdmissionCycles() {
     setCycleInfo(copy);
   }
 
-  const notify = () => toast("enter the start date first!");
+  // const notify = () => toast("enter the start date first!");
 
   const [errorMessage, setErrorMessage] = useState("");
 
