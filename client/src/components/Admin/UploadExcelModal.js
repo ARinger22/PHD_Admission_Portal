@@ -187,6 +187,9 @@ export default function UploadExcelModal() {
                       </p>
                       <ol>
                         <li className="font-semibold italic">
+                          - Application_ID
+                        </li>
+                        <li className="font-semibold italic">
                           - Name
                         </li>
                         <li className="font-semibold italic">

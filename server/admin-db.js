@@ -12,7 +12,6 @@ var Promise = require('promise');
 const handlebars = require("handlebars");
 const path = require("path");
 
-
 dotenv.config();
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -1372,8 +1371,8 @@ const send_mail = async (req, res) => {
   const cycle = await pool.query("SELECT cycle_id from current_cycle;");
   let cycle_id = cycle.rows[0].cycle_id;
 
-const yesRows = rows.filter(row => row[emailColumn] && row[resultColumn].toUpperCase() === "YES");
-const noRows = rows.filter(row => row[emailColumn] && row[resultColumn].toUpperCase() === "NO");
+  const yesRows = rows.filter(row => row[emailColumn] && row[resultColumn].toUpperCase() === "YES");
+  const noRows = rows.filter(row => row[emailColumn] && row[resultColumn].toUpperCase() === "NO");
   
   const emailAddresses = XLSX.utils.sheet_to_json(worksheet)
     .filter(row => row[emailColumn])
@@ -1399,67 +1398,65 @@ for (const row of yesRows) {
     SPECIALIZATION: results.rows[0].specialization_name,
     APPLYING_FOR:results.rows[0].applying_for
   };
-const htmlToSend = yesTemplate(replacements);
+  const htmlToSend = yesTemplate(replacements);
 
-const mailOptions = {
-from: "IIT Ropar",
-to: row[emailColumn],
-subject: "Call letter for interview for PhD Programme at IIT Ropar in the Department of Computer Science and Engineering",
-html: htmlToSend,
-};
-
-
-transporter.sendMail(mailOptions, function (error, info) {
-if (error) {
-console.log(error);
-}
-});
-
-}
-
-  // Send email for NO rows
-const noHtml = fs.readFileSync(path.join(__dirname, "rej_email.html"), "utf-8").toString();
-const noTemplate = handlebars.compile(noHtml);
-
-for (const row of noRows) {
-
-  const results = await pool.query(
-    "SELECT * FROM applications_" + cycle_id + " WHERE application_id=$1;",
-    [row[applicationColumn]]
-  );
-
-  var replacements = {
-    NAME: row[studentNameColumn],
-    REASON: row[remarkColumn],
-    APPLICATION_ID:results.rows[0].application_id,
-    OFFERING_ID:results.rows[0].offering_id,
-    DEPARTMENT:results.rows[0].department_name,
-    SPECIALIZATION: results.rows[0].specialization_name,
-    APPLYING_FOR:results.rows[0].applying_for
+  const mailOptions = {
+    from: "IIT Ropar",
+    to: row[emailColumn],
+    subject: "Call letter for interview for PhD Programme at IIT Ropar in the Department of Computer Science and Engineering",
+    html: htmlToSend,
   };
 
-const htmlToSend = noTemplate(replacements);
 
-const mailOptions = {
-from: "IIT Ropar",
-to: row[emailColumn],
-subject: "Application Status for PhD Programme at IIT Ropar in the Department of Computer Science and Engineering",
-html: htmlToSend,
-};
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      }
+    });
+  }
+
+  // Send email for NO rows
+  const noHtml = fs.readFileSync(path.join(__dirname, "rej_email.html"), "utf-8").toString();
+  const noTemplate = handlebars.compile(noHtml);
+
+  for (const row of noRows) {
+
+    const results = await pool.query(
+      "SELECT * FROM applications_" + cycle_id + " WHERE application_id=$1;",
+      [row[applicationColumn]]
+    );
+
+    var replacements = {
+      NAME: row[studentNameColumn],
+      REASON: row[remarkColumn],
+      APPLICATION_ID:results.rows[0].application_id,
+      OFFERING_ID:results.rows[0].offering_id,
+      DEPARTMENT:results.rows[0].department_name,
+      SPECIALIZATION: results.rows[0].specialization_name,
+      APPLYING_FOR:results.rows[0].applying_for
+    };
+
+    const htmlToSend = noTemplate(replacements);
+
+    const mailOptions = {
+    from: "IIT Ropar",
+    to: row[emailColumn],
+    subject: "Application Status for PhD Programme at IIT Ropar in the Department of Computer Science and Engineering",
+    html: htmlToSend,
+    };
 
 
-transporter.sendMail(mailOptions, function (error, info) {
-if (error) {
-console.log(error);
-}
-});
-}
+    transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+    console.log(error);
+    }
+    });
+  }
 
-  const new_url = format(
-    `${process.env.STORAGE_BASE_URL}/MtechAdmissions/ExcelFiles/${url}`);
+  const new_url = format(`${process.env.STORAGE_BASE_URL}/MtechAdmissions/ExcelFiles/${url}`);
 
 
- await pool.query(
+  await pool.query(
     "Update excels set stat=1 where file_url=$1;",
     [new_url]    
   );
