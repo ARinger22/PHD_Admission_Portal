@@ -11,8 +11,6 @@ const saltRounds = 10;
 var Promise = require('promise');
 const handlebars = require("handlebars");
 const path = require("path");
-const { Console } = require("console");
-
 
 dotenv.config();
 const transporter = nodemailer.createTransport({
