@@ -25,6 +25,6 @@ chrome-user-data
 *.swo
 phd-pg-admission-iit-ropar-0aa094c57f3e.json
 public/
-# .env
+.env
 # package-lock.json
 # .env.local

@@ -79,16 +79,6 @@ function AdmissionCycles() {
     } else obj[prop[0]] = value;
   }
 
-  // const handleFileSubmit = (e, setVariable) => {
-  //   const file = e.target.files[0];
-
-  //   if (file.type !== "application/pdf") {
-  //     e.target.value = null;
-  //     alert("File format not followed! Allowed formats: .pdf");
-  //     return;
-  //   }
-  //   setVariable(file);
-  // };
   const [showAlert, setShowAlert] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -101,7 +91,6 @@ function AdmissionCycles() {
     const myArray = start.split(" ");
     let stmonth = myArray[0];
     
-    // const a= months.findIndex(stmonth);
     let a=0;
     for(let i=0; i<12; i++){
       if(months[i]==stmonth){
@@ -112,7 +101,6 @@ function AdmissionCycles() {
     // alert(a);
     const myArray2 = end.split(" ");
     let endmonth = myArray2[0];
-    // const b= months.findIndex(endmonth);
     let b=0;
     for(let i=0; i<12; i++){
       if(months[i]==endmonth){
@@ -124,17 +112,18 @@ function AdmissionCycles() {
     console.log(start);
     const ay= myArray[1];
     const by= myArray2[1];
-    // alert(a+" "+b+" "+ay+" "+by);
     console.log(end);
     if(ay>by){
       setShowAlert(true);
-      // alert("Starting time must be before ending time.");
-      // <Alert severity="warning">This is a warning Alert.</Alert>
+      setTimeout(() => {
+        setShowAlert(false); // Hide the alert after 3000 milliseconds (3 seconds)
+      }, 3000);
     }
     else if(ay==by && a>b){
       setShowAlert(true);
-      // alert("Starting time must be before ending time.");
-      // <Alert severity="warning">This is a warning Alert.</Alert>
+      setTimeout(() => {
+        setShowAlert(false); // Hide the alert after 3000 milliseconds (3 seconds)
+      }, 3000);
     }
     else{
       setIsLoading(true);
@@ -169,10 +158,6 @@ function AdmissionCycles() {
     assign(copy, key, event.target.value);
     setCycleInfo(copy);
   }
-
-  // const notify = () => toast("enter the start date first!");
-
-  const [errorMessage, setErrorMessage] = useState("");
 
   function handleMonthChange(event, key) {
     let copy = { ...cycleInfo };
