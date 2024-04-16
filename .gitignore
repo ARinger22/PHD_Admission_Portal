@@ -1,3 +1,4 @@
+*.env/
 .DS_STORE
 node_modules
 scripts/flow/*/.flowconfig
@@ -25,6 +26,6 @@ chrome-user-data
 *.swo
 phd-pg-admission-iit-ropar-0aa094c57f3e.json
 public/
-.env
+server/.env/
 # package-lock.json
 # .env.local
