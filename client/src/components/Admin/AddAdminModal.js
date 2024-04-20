@@ -15,7 +15,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "30%",
+  width: "60%",
   bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: 5,
@@ -47,13 +47,13 @@ export default function AddAdminModal() {
     { value: "Biomedical Engineering", label: "Biomedical Engineering" },
     { value: "Chemical Engineering", label: "Chemical Engineering" },
     { value: "Civil Engineering", label: "Civil Engineering" },
-    {value: "Computer Science and Engineering",label: "Computer Science and Engineering",},
+    { value: "Computer Science and Engineering", label: "Computer Science and Engineering", },
     { value: "Electrical Engineering", label: "Electrical Engineering" },
     { value: "Mechanical Engineering", label: "Mechanical Engineering" },
     { value: "Chemisty", label: "Chemistry" },
     { value: "Humanities and Social Sciences", label: "Humanities and Social Sciences" },
     { value: "Metallurgical and Material Engineering", label: "Metallurgical and Material Engineering" },
-    {value : "Physics" , label : "Physics"},
+    { value: "Physics", label: "Physics" },
   ];
 
   const [open, setOpen] = React.useState(false);
@@ -144,7 +144,7 @@ export default function AddAdminModal() {
         <Box sx={style}>
           <div
             id="modal-modal-description"
-            className="relative w-full max-w-2xl h-full md:h-auto"
+            className="relative w-full h-full md:h-auto  "
           >
             <div className="bg-white rounded-lg shadow relative">
               <div className="flex items-start justify-between p-5 border-b rounded-t">
@@ -168,7 +168,7 @@ export default function AddAdminModal() {
                   </svg>
                 </button>
               </div>
-              <div className="px-6 pt-6 pb-2 space-y-6">
+              <div className="px-6 pt-6 pb-2 space-y-6 ">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-full sm:col-span-full">

@@ -236,8 +236,8 @@ export default function Profile() {
   return (
     <>
       <DashboardNavBar currentFlag={2} />
-      <div className="flex">
-        <div className="flex-2 my-20 mx-20 block">
+      <div className="flex justify-center">
+        <div className="flex-2 my-4 mx-4 block">
           <img
             className="ring-2 h-40 w-40 ring-gray-700 rounded-full border border-black"
             src={
@@ -248,12 +248,16 @@ export default function Profile() {
             alt="Profile"
           />
         </div>
+      </div>
 
-        <div className="mr-20 mt-4 flex-1 bg-white shadow overflow-hidden sm:rounded-lg">
+
+      <div className="flex my-10 mx-20 md:px-20 mx-auto ">
+        <div className="my-2 flex-1 bg-white shadow overflow-hidden sm:rounded-lg">
           <div className="flex space-x-3 px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
               Personal Details
             </h3>
+
 
             <PersonalInfo
               onChangeNationality={onChangeNationality}
@@ -392,7 +396,8 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="flex my-10 mx-20">
+
+      <div className="flex my-10 mx-20 md:px-20 mx-auto">
         <div className="my-2 flex-1 bg-white shadow overflow-hidden sm:rounded-lg">
           <div className="flex space-x-3 px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -506,7 +511,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="flex mx-20 mt-2 mb-10">
+      <div className="flex my-10 mx-20 md:px-20 mx-auto">
         <div className="my-2 flex-1 bg-white shadow overflow-hidden sm:rounded-lg">
           <div className="flex space-x-3 px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">

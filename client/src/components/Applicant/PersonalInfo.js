@@ -36,22 +36,22 @@ export default function PersonalInfo(props) {
   const [marAlert, setmarAlert] = useState(false);
   const onSubmit = (event) => {
     event.preventDefault();
-    
+
     const formData = new FormData();
     const currentDate = new Date();
 
     const currentYear = currentDate.getFullYear();
     const dob = new Date(props.localProfileInfo.date_of_birth);
 
-    
-    const nameRegex = /^[a-zA-Z\s]+$/; 
-    const uppercaseRegex = /^[A-Z\s]+$/; 
-    const lowercaseRegex = /^[a-z\s]+$/; 
+
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    const uppercaseRegex = /^[A-Z\s]+$/;
+    const lowercaseRegex = /^[a-z\s]+$/;
 
     if (!nameRegex.test(props.localProfileInfo.full_name) && !uppercaseRegex.test(props.localProfileInfo.full_name) && !lowercaseRegex.test(props.localProfileInfo.full_name)) {
       setnameAlert(true);
       // alert("Invalid name");
-      return; 
+      return;
     }
     setnameAlert(false);
     if (dob > currentDate) {
@@ -60,9 +60,9 @@ export default function PersonalInfo(props) {
       return;
     }
     setdobAlert(false);
-    const blood= props.localProfileInfo.blood_group;
-    const possBl=['O+','o+', 'O-','o-', 'A+','a+', 'A-','a-', 'B+','b+', 'B-','b-', 'AB+','ab+', 'AB-','ab-','O +','o +', 'O -','o -', 'A +','a +', 'A -','a -', 'B +','b +', 'B -','b -', 'AB +','ab +', 'AB -','ab -', 'Other'];
-    if(!possBl.includes(blood)){
+    const blood = props.localProfileInfo.blood_group;
+    const possBl = ['O+', 'o+', 'O-', 'o-', 'A+', 'a+', 'A-', 'a-', 'B+', 'b+', 'B-', 'b-', 'AB+', 'ab+', 'AB-', 'ab-', 'O +', 'o +', 'O -', 'o -', 'A +', 'a +', 'A -', 'a -', 'B +', 'b +', 'B -', 'b -', 'AB +', 'ab +', 'AB -', 'ab -', 'Other'];
+    if (!possBl.includes(blood)) {
       setmarAlert(true);
       return;
     }
@@ -73,7 +73,7 @@ export default function PersonalInfo(props) {
       delete props.localProfileInfo.spouse_name;
       delete props.localProfileInfo.spouse_occupation;
     }
-    
+
     setIsLoading(true);
     setdobAlert(false);
     setnameAlert(false);
@@ -212,7 +212,7 @@ export default function PersonalInfo(props) {
             </div>
 
             <div className="overflow-y-auto overflow-x-hidden overscroll-none h-5/6">
-              <div className="px-6 py-6 mx-8 bg-[#f3f4f6]">
+              <div className="px-4 py-4 md:px-10 md:py-10 mx-auto my-10 md:my-20 bg-[#f3f4f6] rounded-2xl ">
                 <div className="mt-10 sm:mt-0">
                   <div className="md:grid md:grid-cols-3 md:gap-6">
                     {/* Personal Details Heading and Sub Heading  */}
@@ -254,11 +254,11 @@ export default function PersonalInfo(props) {
                                   required
                                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 />
-                                <div style={{"margin-top":"10px"}}>
-                            {nameAlert && (
-                                      <Alert severity="warning">Please use capital and small English letters (i.e. a-z, A-Z)</Alert>
-                                    )}
-                            </div>
+                                <div style={{ "margin-top": "10px" }}>
+                                  {nameAlert && (
+                                    <Alert severity="warning">Please use capital and small English letters (i.e. a-z, A-Z)</Alert>
+                                  )}
+                                </div>
                               </div>
                               {/* Guardian */}
                               <div className="col-span-6 sm:col-span-3">
@@ -416,8 +416,8 @@ export default function PersonalInfo(props) {
                                   value={props.localProfileInfo.date_of_birth}
                                 />
                                 {dobAlert && (
-                                      <Alert severity="warning">Please use valid D.O.B.</Alert>
-                                    )}
+                                  <Alert severity="warning">Please use valid D.O.B.</Alert>
+                                )}
                               </div>
 
                               {/* Aadhar Card Number */}
@@ -473,7 +473,7 @@ export default function PersonalInfo(props) {
                                   <option value="ST">ST</option>
                                 </select>
                               </div>
-                              {props.localProfileInfo.category !==  'GEN' ? (
+                              {props.localProfileInfo.category !== 'GEN' ? (
                                 <>
                                   <div className="col-span-6 sm:col-span-3">
                                     <label
@@ -758,11 +758,11 @@ export default function PersonalInfo(props) {
                                   required
                                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 />
-                                <div style={{"margin-top":"10px"}}>
-                            {marAlert && (
-                                      <Alert severity="warning">Please use these bloods only: 'O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'Other'</Alert>
-                                    )}
-                            </div>
+                                <div style={{ "margin-top": "10px" }}>
+                                  {marAlert && (
+                                    <Alert severity="warning">Please use these bloods only: 'O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'Other'</Alert>
+                                  )}
+                                </div>
                               </div>
                               {/* Marital Status */}
                               <div className="col-span-6 sm:col-span-3">
@@ -791,7 +791,7 @@ export default function PersonalInfo(props) {
                                   htmlFor="spouse_name"
                                   className="block text-sm font-medium text-gray-700"
                                 >
-                                  Name of Spouse 
+                                  Name of Spouse
                                 </label>
                                 <input
                                   type="text"

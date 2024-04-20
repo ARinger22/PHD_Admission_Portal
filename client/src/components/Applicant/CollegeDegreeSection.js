@@ -4,7 +4,7 @@ import crossPic from "../../images/red_cross.svg";
 function CollegeDegreeSection(props) {
   return (
     <div className="col-span-full sm:col-span-full">
-      <div className="outline rounded outline-[#f3f4f6] px-8 py-8 grid grid-cols-6 gap-6">
+      <div className="grid grid-cols-6 gap-6">
         <div className="col-span-full sm:col-span-full">
           {props.id === 0 ? (
             <>
@@ -122,7 +122,7 @@ function CollegeDegreeSection(props) {
             htmlFor="percentage-cgpa-format"
             className="block text-sm font-medium text-gray-700"
           >
-            Percentage/CGPA
+            Percentage/CG
             <span style={{ color: "#ff0000" }}> *</span>
           </label>
           <select
@@ -147,7 +147,7 @@ function CollegeDegreeSection(props) {
             htmlFor="percentage-cgpa-value"
             className="block text-sm font-medium text-gray-700"
           >
-            Percentage/CGPA
+            Percentage/CG
             <span style={{ color: "#ff0000" }}> *</span>
           </label>
           <input
@@ -252,7 +252,7 @@ function CollegeDegreeSection(props) {
           </label>
 
           {!props.localDegrees[props.id]["8"] &&
-          !props.degreesFiles[props.id][0] ? (
+            !props.degreesFiles[props.id][0] ? (
             <>
               <input
                 className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -297,10 +297,10 @@ function CollegeDegreeSection(props) {
                     props.degreesFiles[props.id][0]
                       ? props.degreesFiles[props.id][0].name
                       : props.localDegrees[props.id]["8"].substring(
-                          props.localDegrees[props.id]["8"].lastIndexOf("/") +
-                            1,
-                          props.localDegrees[props.id]["8"].lastIndexOf("_")
-                        )
+                        props.localDegrees[props.id]["8"].lastIndexOf("/") +
+                        1,
+                        props.localDegrees[props.id]["8"].lastIndexOf("_")
+                      )
                   }
                   readOnly
                 />
@@ -330,7 +330,7 @@ function CollegeDegreeSection(props) {
           </label>
 
           {!props.localDegrees[props.id]["9"] &&
-          !props.degreesFiles[props.id][1] ? (
+            !props.degreesFiles[props.id][1] ? (
             <>
               <input
                 className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -375,10 +375,10 @@ function CollegeDegreeSection(props) {
                     props.degreesFiles[props.id][1]
                       ? props.degreesFiles[props.id][1].name
                       : props.localDegrees[props.id]["9"].substring(
-                          props.localDegrees[props.id]["9"].lastIndexOf("/") +
-                            1,
-                          props.localDegrees[props.id]["9"].lastIndexOf("_")
-                        )
+                        props.localDegrees[props.id]["9"].lastIndexOf("/") +
+                        1,
+                        props.localDegrees[props.id]["9"].lastIndexOf("_")
+                      )
                   }
                   readOnly
                 />
