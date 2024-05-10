@@ -561,7 +561,7 @@ function AdmissionCycles() {
                   currentCycles.map((cycle, ind) => (
                     <div
                       key={cycle.cycle_id}
-                      className="bg-white h-auto block py-5 pl-8 w-full border border-gray-300 hover:shadow-xl rounded-xl ease-in-out duration-200"
+                      className="bg-white h-auto block py-5 pl-8 pr-3 w-full border border-gray-300 hover:shadow-xl rounded-xl ease-in-out duration-200"
                     >
                       <div className="grid grid-cols-11 items-center justify-center content-center text-gray-500 sm:pr-8">
                         <Link
@@ -609,7 +609,7 @@ function AdmissionCycles() {
 
               <div className=" mt-5 mx-auto space-y-4">
                 {previousCycles.map((previousCycle, ind) => (
-                  <div className="bg-[#fcfcfc] h-auto block py-5 pl-8 w-full border border-gray-300 hover:shadow-xl rounded-xl ease-in-out duration-200">
+                  <div className="bg-[#fcfcfc] h-auto block py-5 pl-8 pr-3 w-full border border-gray-300 hover:shadow-xl rounded-xl ease-in-out duration-200">
                     <div className="grid grid-cols-11 items-center justify-center content-center text-gray-500 sm:pr-8">
                       <Link
                         className="col-span-9 grid grid-cols-9"
