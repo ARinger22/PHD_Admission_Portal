@@ -155,17 +155,17 @@ export default function AddTemplateCard(props) {
         <div className="p-2">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="px-6 pb-6 pt-2 mb-0 space-y-4 "
+            className="space-y-6 sm:space-y-8 lg:space-y-10"
           >
-            <div className="flex">
-              <p className="text-lg font-medium">New Template</p>
+            <div className="flex items-center mb-4">
+              <p className="text-lg lg:text-xl font-medium">New Template</p>
               <button
                 type="button"
                 onClick={() => props.setIsAddingTemplate(false)}
                 className="text-gray-400 bg-gray-100 focus:outline-none bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-5 h-5 lg:w-6 lg:h-6"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
