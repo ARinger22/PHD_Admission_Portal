@@ -43,6 +43,7 @@ CREATE TABLE applicants (
     nationality TEXT,
     gender TEXT,
     advertisement TEXT,
+    status_student TEXT,
 
     -- Communication Details
     communication_address TEXT,
@@ -76,9 +77,12 @@ CREATE TABLE applicants (
     marksheet_12th_url TEXT,
 
     degrees TEXT[][],
+    degrees2 TEXT[][],
 
     other_remarks TEXT,
-    is_last_degree_completed TEXT
+    other_remarks2 TEXT,
+    is_last_degree_completed TEXT,
+    is_last_job_completed TEXT
 );
 
 CREATE TABLE admins(
@@ -184,7 +188,7 @@ INSERT INTO TEMPLATES(email_id,name,type,column_list,column_list_compact) VALUES
 'category', 'is_pwd','pwd_type','blood_group', 'marital_status','spouse_name','spouse_occupation', 'nationality', 'category_certificate_url','pwd_url','gender','advertisement', 'communication_address', 'communication_city','communication_state', 'communication_pincode', 'permanent_address', 'permanent_city', 'permanent_state',
 'permanent_pincode', 'mobile_number', 'alternate_mobile_number', 'email_id', 'degree_10th', 'board_10th', 'percentage_cgpa_format_10th','percentage_cgpa_value_10th',
 'year_of_passing_10th', 'remarks_10th', 'marksheet_10th_url', 'degree_12th', 'board_12th', 'percentage_cgpa_format_12th', 'percentage_cgpa_value_12th',
-'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees', 'other_remarks', 'is_last_degree_completed','transaction_id',
+'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees','degrees2', 'other_remarks', 'other_remarks2', 'is_last_degree_completed','is_last_job_completed', 'transaction_id',
 'interdisciplinary_prog_check' ,'interdisciplinary_prog_name','area_of_research','first_pref','second_pref','third_pref','fourth_pref','specific_research_area','noc_pdf','sop_pdf',
 'qualifying_examination_1', 'branch_code_1', 'year_1','valid_upto_1', 'all_india_rank_1', 'score_1' 
 ,'qualifying_examination_2', 'branch_code_2', 'year_2','valid_upto_2', 'all_india_rank_2', 'score_2'
@@ -201,7 +205,7 @@ INSERT INTO TEMPLATES(email_id,name,type,column_list,column_list_compact) VALUES
 'category', 'is_pwd','pwd_type','blood_group', 'marital_status','spouse_name','spouse_occupation', 'nationality', 'category_certificate_url','pwd_url','gender','advertisement', 'communication_address', 'communication_city','communication_state', 'communication_pincode', 'permanent_address', 'permanent_city', 'permanent_state',
 'permanent_pincode', 'mobile_number', 'alternate_mobile_number', 'email_id', 'degree_10th', 'board_10th', 'percentage_cgpa_format_10th','percentage_cgpa_value_10th',
 'year_of_passing_10th', 'remarks_10th', 'marksheet_10th_url', 'degree_12th', 'board_12th', 'percentage_cgpa_format_12th', 'percentage_cgpa_value_12th',
-'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees', 'other_remarks', 'is_last_degree_completed','transaction_id',
+'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees','degrees2', 'other_remarks','other_remarks2', 'is_last_degree_completed','is_last_job_completed', 'transaction_id',
 'interdisciplinary_prog_check' ,'interdisciplinary_prog_name','area_of_research','first_pref','second_pref','third_pref','fourth_pref','specific_research_area','noc_pdf','sop_pdf',
 'qualifying_examination_1', 'branch_code_1', 'year_1','valid_upto_1', 'all_india_rank_1', 'score_1' 
 ,'qualifying_examination_2', 'branch_code_2', 'year_2','valid_upto_2', 'all_india_rank_2', 'score_2'
@@ -218,7 +222,7 @@ INSERT INTO TEMPLATES(email_id,name,type,column_list,column_list_compact) VALUES
 'category', 'is_pwd','pwd_type','blood_group', 'marital_status','spouse_name','spouse_occupation', 'nationality', 'category_certificate_url','pwd_url','gender','advertisement', 'communication_address', 'communication_city','communication_state', 'communication_pincode', 'permanent_address', 'permanent_city', 'permanent_state',
 'permanent_pincode', 'mobile_number', 'alternate_mobile_number', 'email_id', 'degree_10th', 'board_10th', 'percentage_cgpa_format_10th','percentage_cgpa_value_10th',
 'year_of_passing_10th', 'remarks_10th', 'marksheet_10th_url', 'degree_12th', 'board_12th', 'percentage_cgpa_format_12th', 'percentage_cgpa_value_12th',
-'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees', 'other_remarks', 'is_last_degree_completed','transaction_id',
+'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees','degrees2', 'other_remarks','other_remarks2', 'is_last_degree_completed','is_last_job_completed', 'transaction_id',
 'interdisciplinary_prog_check' ,'interdisciplinary_prog_name','area_of_research','first_pref','second_pref','third_pref','fourth_pref','specific_research_area','noc_pdf','sop_pdf',
 'qualifying_examination_1', 'branch_code_1', 'year_1','valid_upto_1', 'all_india_rank_1', 'score_1' 
 ,'qualifying_examination_2', 'branch_code_2', 'year_2','valid_upto_2', 'all_india_rank_2', 'score_2'
@@ -236,7 +240,7 @@ INSERT INTO TEMPLATES(email_id,name,type,column_list,column_list_compact) VALUES
 'category', 'is_pwd','pwd_type','blood_group', 'marital_status','spouse_name','spouse_occupation', 'nationality', 'category_certificate_url','pwd_url','gender','advertisement', 'communication_address', 'communication_city','communication_state', 'communication_pincode', 'permanent_address', 'permanent_city', 'permanent_state',
 'permanent_pincode', 'mobile_number', 'alternate_mobile_number', 'email_id', 'degree_10th', 'board_10th', 'percentage_cgpa_format_10th','percentage_cgpa_value_10th',
 'year_of_passing_10th', 'remarks_10th', 'marksheet_10th_url', 'degree_12th', 'board_12th', 'percentage_cgpa_format_12th', 'percentage_cgpa_value_12th',
-'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees', 'other_remarks', 'is_last_degree_completed','transaction_id','bachelor_degree_complete','area_of_research','first_pref','second_pref','third_pref','fourth_pref','specific_research_area','resume_pdf','sop_pdf',
+'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees','degrees2', 'other_remarks','other_remarks2', 'is_last_degree_completed','is_last_job_completed', 'transaction_id','bachelor_degree_complete','area_of_research','first_pref','second_pref','third_pref','fourth_pref','specific_research_area','resume_pdf','sop_pdf',
 'qualifying_examination_1', 'branch_code_1', 'year_1','valid_upto_1', 'all_india_rank_1', 'score_1' 
 ,'qualifying_examination_2', 'branch_code_2', 'year_2','valid_upto_2', 'all_india_rank_2', 'score_2'
 ,'qualifying_examination_3', 'branch_code_3', 'year_3','valid_upto_3', 'all_india_rank_3', 'score_3','exam_result_pdf', 
@@ -253,7 +257,7 @@ INSERT INTO TEMPLATES(email_id,name,type,column_list,column_list_compact) VALUES
 'category', 'is_pwd','pwd_type','blood_group', 'marital_status','spouse_name','spouse_occupation', 'nationality', 'category_certificate_url','pwd_url','gender','advertisement', 'communication_address', 'communication_city','communication_state', 'communication_pincode', 'permanent_address', 'permanent_city', 'permanent_state',
 'permanent_pincode', 'mobile_number', 'alternate_mobile_number', 'email_id', 'degree_10th', 'board_10th', 'percentage_cgpa_format_10th','percentage_cgpa_value_10th',
 'year_of_passing_10th', 'remarks_10th', 'marksheet_10th_url', 'degree_12th', 'board_12th', 'percentage_cgpa_format_12th', 'percentage_cgpa_value_12th',
-'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees', 'other_remarks', 'is_last_degree_completed','transaction_id','area_of_research','first_pref','second_pref','third_pref','fourth_pref','specific_research_area','noc_pdf','resume_pdf','sop_pdf',
+'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees','degrees2', 'other_remarks','other_remarks2', 'is_last_degree_completed','is_last_job_completed', 'transaction_id','area_of_research','first_pref','second_pref','third_pref','fourth_pref','specific_research_area','noc_pdf','resume_pdf','sop_pdf',
 'qualifying_examination_1', 'branch_code_1', 'year_1','valid_upto_1', 'all_india_rank_1', 'score_1' 
 ,'qualifying_examination_2', 'branch_code_2', 'year_2','valid_upto_2', 'all_india_rank_2', 'score_2'
 ,'qualifying_examination_3', 'branch_code_3', 'year_3','valid_upto_3', 'all_india_rank_3', 'score_3','exam_result_pdf', 
@@ -270,7 +274,7 @@ INSERT INTO TEMPLATES(email_id,name,type,column_list,column_list_compact) VALUES
 'category', 'is_pwd','pwd_type','blood_group', 'marital_status','spouse_name','spouse_occupation', 'nationality', 'category_certificate_url','pwd_url','gender','advertisement', 'communication_address', 'communication_city','communication_state', 'communication_pincode', 'permanent_address', 'permanent_city', 'permanent_state',
 'permanent_pincode', 'mobile_number', 'alternate_mobile_number', 'email_id', 'degree_10th', 'board_10th', 'percentage_cgpa_format_10th','percentage_cgpa_value_10th',
 'year_of_passing_10th', 'remarks_10th', 'marksheet_10th_url', 'degree_12th', 'board_12th', 'percentage_cgpa_format_12th', 'percentage_cgpa_value_12th',
-'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees', 'other_remarks', 'is_last_degree_completed','transaction_id',' pi_project_number','area_of_research','first_pref','second_pref','third_pref','fourth_pref','specific_research_area','letter_pi__pdf','sop_pdf',
+'year_of_passing_12th', 'remarks_12th', 'marksheet_12th_url', 'degrees','degrees2', 'other_remarks','other_remarks2', 'is_last_degree_completed','is_last_job_completed', 'transaction_id',' pi_project_number','area_of_research','first_pref','second_pref','third_pref','fourth_pref','specific_research_area','letter_pi__pdf','sop_pdf',
 'qualifying_examination_1', 'branch_code_1', 'year_1','valid_upto_1', 'all_india_rank_1', 'score_1' 
 ,'qualifying_examination_2', 'branch_code_2', 'year_2','valid_upto_2', 'all_india_rank_2', 'score_2'
 ,'qualifying_examination_3', 'branch_code_3', 'year_3','valid_upto_3', 'all_india_rank_3', 'score_3','exam_result_pdf', 

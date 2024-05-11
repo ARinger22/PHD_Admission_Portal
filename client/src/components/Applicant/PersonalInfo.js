@@ -10,7 +10,7 @@ import crossPic from "../../images/red_cross.svg";
 import { PencilIcon } from "@heroicons/react/outline";
 import DatePicker from "./DatePicker";
 import { CountryDropdown } from "react-country-region-selector";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 
 const style = {
   position: "absolute",
@@ -42,13 +42,15 @@ export default function PersonalInfo(props) {
 
     const currentYear = currentDate.getFullYear();
     const dob = new Date(props.localProfileInfo.date_of_birth);
-
-
     const nameRegex = /^[a-zA-Z\s]+$/;
     const uppercaseRegex = /^[A-Z\s]+$/;
     const lowercaseRegex = /^[a-z\s]+$/;
 
-    if (!nameRegex.test(props.localProfileInfo.full_name) && !uppercaseRegex.test(props.localProfileInfo.full_name) && !lowercaseRegex.test(props.localProfileInfo.full_name)) {
+    if (
+      !nameRegex.test(props.localProfileInfo.full_name) &&
+      !uppercaseRegex.test(props.localProfileInfo.full_name) &&
+      !lowercaseRegex.test(props.localProfileInfo.full_name)
+    ) {
       setnameAlert(true);
       // alert("Invalid name");
       return;
@@ -68,7 +70,9 @@ export default function PersonalInfo(props) {
     }
     setmarAlert(false);
     if (props.localProfileInfo.marital_status === "Unmarried") {
-      alert("Spouse name and occupation is deleted automatically since marital status filled is unmarried.");
+      alert(
+        "Spouse name and occupation is deleted automatically since marital status filled is unmarried."
+      );
       // alert(true);
       delete props.localProfileInfo.spouse_name;
       delete props.localProfileInfo.spouse_occupation;
@@ -91,9 +95,13 @@ export default function PersonalInfo(props) {
     formData.append("blood_group", props.localProfileInfo.blood_group);
     formData.append("marital_status", props.localProfileInfo.marital_status);
     formData.append("spouse_name", props.localProfileInfo.spouse_name);
-    formData.append("spouse_occupation", props.localProfileInfo.spouse_occupation);
+    formData.append(
+      "spouse_occupation",
+      props.localProfileInfo.spouse_occupation
+    );
     formData.append("nationality", props.localProfileInfo.nationality);
     formData.append("gender", props.localProfileInfo.gender);
+    formData.append("status_student", props.localProfileInfo.status_student);
     formData.append("advertisement", props.localProfileInfo.advertisement);
     formData.append("profile_image", profile_image);
     formData.append("pwd_certificate", pwdCertificate);
@@ -116,9 +124,7 @@ export default function PersonalInfo(props) {
   const handleFileSubmit = (e, maxSize, setVariable) => {
     const file = e.target.files[0];
 
-    if (
-      file.type !== "application/pdf"
-    ) {
+    if (file.type !== "application/pdf") {
       e.target.value = null;
       alert("File format not followed! Allowed formats: .pdf");
       return;
@@ -256,6 +262,10 @@ export default function PersonalInfo(props) {
                                 />
                                 <div style={{ "margin-top": "10px" }}>
                                   {nameAlert && (
+                                    <Alert severity="warning">
+                                      Please use capital and small English
+                                      letters (i.e. a-z, A-Z)
+                                    </Alert>
                                     <Alert severity="warning">Please use capital and small English letters (i.e. a-z, A-Z)</Alert>
                                   )}
                                 </div>
@@ -319,7 +329,7 @@ export default function PersonalInfo(props) {
                                 </label>
 
                                 {!props.localProfileInfo.profile_image_url &&
-                                  !profile_image ? (
+                                !profile_image ? (
                                   <>
                                     <input
                                       className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -370,13 +380,13 @@ export default function PersonalInfo(props) {
                                           profile_image
                                             ? profile_image.name
                                             : props.localProfileInfo.profile_image_url.substring(
-                                              props.localProfileInfo.profile_image_url.lastIndexOf(
-                                                "/"
-                                              ) + 1,
-                                              props.localProfileInfo.profile_image_url.lastIndexOf(
-                                                "_"
+                                                props.localProfileInfo.profile_image_url.lastIndexOf(
+                                                  "/"
+                                                ) + 1,
+                                                props.localProfileInfo.profile_image_url.lastIndexOf(
+                                                  "_"
+                                                )
                                               )
-                                            )
                                         }
                                         readOnly
                                       />
@@ -416,6 +426,9 @@ export default function PersonalInfo(props) {
                                   value={props.localProfileInfo.date_of_birth}
                                 />
                                 {dobAlert && (
+                                  <Alert severity="warning">
+                                    Please use valid D.O.B.
+                                  </Alert>
                                   <Alert severity="warning">Please use valid D.O.B.</Alert>
                                 )}
                               </div>
@@ -481,10 +494,15 @@ export default function PersonalInfo(props) {
                                       htmlFor="user_avatar"
                                     >
                                       Category Certificate (SC/ST/OBC/EWS)
-                                      <span style={{ color: "#ff0000" }}> *</span>
+                                      <span style={{ color: "#ff0000" }}>
+                                        {" "}
+                                        *
+                                      </span>
                                     </label>
 
-                                    {!props.localProfileInfo.category_certificate_url && !categoryCertificate ? (
+                                    {!props.localProfileInfo
+                                      .category_certificate_url &&
+                                    !categoryCertificate ? (
                                       <>
                                         <input
                                           className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -548,13 +566,13 @@ export default function PersonalInfo(props) {
                                               categoryCertificate
                                                 ? categoryCertificate.name
                                                 : props.localProfileInfo.category_certificate_url.substring(
-                                                  props.localProfileInfo.category_certificate_url.lastIndexOf(
-                                                    "/"
-                                                  ) + 1,
-                                                  props.localProfileInfo.category_certificate_url.lastIndexOf(
-                                                    "_"
+                                                    props.localProfileInfo.category_certificate_url.lastIndexOf(
+                                                      "/"
+                                                    ) + 1,
+                                                    props.localProfileInfo.category_certificate_url.lastIndexOf(
+                                                      "_"
+                                                    )
                                                   )
-                                                )
                                             }
                                             readOnly
                                           />
@@ -580,8 +598,7 @@ export default function PersonalInfo(props) {
                                   </div>
                                 </>
                               ) : (
-                                <>
-                                </>
+                                <></>
                               )}
                               {/* PWD Category */}
                               <div className="col-span-6 sm:col-span-3">
@@ -607,7 +624,7 @@ export default function PersonalInfo(props) {
                                   <option value="NO">NO</option>
                                 </select>
                               </div>
-                              {props.localProfileInfo.is_pwd === 'YES' ? (
+                              {props.localProfileInfo.is_pwd === "YES" ? (
                                 <>
                                   {/* pwd type */}
                                   <div className="col-span-6 sm:col-span-3">
@@ -615,8 +632,12 @@ export default function PersonalInfo(props) {
                                       htmlFor="pwd_type"
                                       className="block text-sm font-medium text-gray-700"
                                     >
-                                      If Yes specify the type i.e HH, OH, VI etc:
-                                      <span style={{ color: "#ff0000" }}> *</span>
+                                      If Yes specify the type i.e HH, OH, VI
+                                      etc:
+                                      <span style={{ color: "#ff0000" }}>
+                                        {" "}
+                                        *
+                                      </span>
                                     </label>
                                     <input
                                       type="text"
@@ -637,10 +658,14 @@ export default function PersonalInfo(props) {
                                       htmlFor="user_avatar"
                                     >
                                       Pwd Certificate
-                                      <span style={{ color: "#ff0000" }}> *</span>
+                                      <span style={{ color: "#ff0000" }}>
+                                        {" "}
+                                        *
+                                      </span>
                                     </label>
 
-                                    {!props.localProfileInfo.pwd_url && !pwdCertificate ? (
+                                    {!props.localProfileInfo.pwd_url &&
+                                    !pwdCertificate ? (
                                       <>
                                         <input
                                           className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -704,13 +729,13 @@ export default function PersonalInfo(props) {
                                               pwdCertificate
                                                 ? pwdCertificate.name
                                                 : props.localProfileInfo.pwd_url.substring(
-                                                  props.localProfileInfo.pwd_url.lastIndexOf(
-                                                    "/"
-                                                  ) + 1,
-                                                  props.localProfileInfo.pwd_url.lastIndexOf(
-                                                    "_"
+                                                    props.localProfileInfo.pwd_url.lastIndexOf(
+                                                      "/"
+                                                    ) + 1,
+                                                    props.localProfileInfo.pwd_url.lastIndexOf(
+                                                      "_"
+                                                    )
                                                   )
-                                                )
                                             }
                                             readOnly
                                           />
@@ -736,8 +761,7 @@ export default function PersonalInfo(props) {
                                   </div>
                                 </>
                               ) : (
-                                <>
-                                </>
+                                <></>
                               )}
                               <div className="col-span-6 sm:col-span-3">
                                 <label
@@ -760,6 +784,11 @@ export default function PersonalInfo(props) {
                                 />
                                 <div style={{ "margin-top": "10px" }}>
                                   {marAlert && (
+                                    <Alert severity="warning">
+                                      Please use these bloods only: 'O+', 'O-',
+                                      'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-',
+                                      'Other'
+                                    </Alert>
                                     <Alert severity="warning">Please use these bloods only: 'O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'Other'</Alert>
                                   )}
                                 </div>
@@ -813,7 +842,9 @@ export default function PersonalInfo(props) {
                                   Is spouse working in government organization?
                                 </label>
                                 <select
-                                  value={props.localProfileInfo.spouse_occupation}
+                                  value={
+                                    props.localProfileInfo.spouse_occupation
+                                  }
                                   onChange={(event) =>
                                     props.onChange(event, "spouse_occupation")
                                   }
@@ -874,7 +905,8 @@ export default function PersonalInfo(props) {
                                   htmlFor="advertisement"
                                   className="block text-sm font-medium text-gray-700"
                                 >
-                                  How do you learn about PhD Admissions in IIT Ropar
+                                  How do you learn about PhD Admissions in IIT
+                                  Ropar
                                   <span style={{ color: "#ff0000" }}> *</span>
                                 </label>
                                 <select
@@ -890,9 +922,37 @@ export default function PersonalInfo(props) {
                                   <option value="">Select</option>
                                   <option value="Newspaper">Newspaper</option>
                                   <option value="Website">Website</option>
-                                  <option value="Social Network (like facebook, twitter)">Social Network (like facebook, twitter)</option>
-                                  <option value="Outreach Activity">Outreach Activity</option>
+                                  <option value="Social Network (like facebook, twitter)">
+                                    Social Network (like facebook, twitter)
+                                  </option>
+                                  <option value="Outreach Activity">
+                                    Outreach Activity
+                                  </option>
                                   <option value="Other">Any Other</option>
+                                </select>
+                              </div>
+                              <div className="col-span-6 sm:col-span-3">
+                                <label
+                                  htmlFor="status_student"
+                                  className="block text-sm font-medium text-gray-700"
+                                >
+                                  Student Status
+                                  <span style={{ color: "#ff0000" }}> *</span>
+                                </label>
+                                <select
+                                  required
+                                  value={props.localProfileInfo.status_student}
+                                  onChange={(event) =>
+                                    props.onChange(event, "status_student")
+                                  }
+                                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                >
+                                  <option value="">-- Select --</option>
+                                  <option value="regular">Regular</option>
+                                  <option value="part_time">Part Time</option>
+                                  <option value="erp">
+                                    ERP
+                                  </option>
                                 </select>
                               </div>
                             </div>
