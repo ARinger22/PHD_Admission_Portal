@@ -59,7 +59,16 @@ export default function AddOfferingModal(props) {
     formData.append("department", data.department);
     formData.append("specialization", data.specialization);
     formData.append("eligibility", data.eligibility);
-    formData.append("deadline", data.deadline);
+    const currentDate = new Date();
+
+    const deadlineDate = new Date(data.deadline);
+    if (deadlineDate > currentDate) {
+      formData.append("deadline", data.deadline);
+    } else {
+      window.alert("Deadline should be after the current day.");
+      setIsLoading(false);
+      return;
+    }
     formData.append("is_accepting_applications", applicationChecked);
     formData.append("is_draft_mode", draftChecked);
     formData.append("cycle_id", props.cycle_id);
