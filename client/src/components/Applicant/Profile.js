@@ -3,6 +3,7 @@ import { PaperClipIcon } from "@heroicons/react/solid";
 import PersonalInfo from "./PersonalInfo";
 import CommunicationDetails from "./CommunicationDetails";
 import EducationalDetails from "./EducationalDetails";
+import ExperienceDetails from "./ExperienceDetails";
 import DashboardNavBar from "./DashboardNavBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -77,11 +78,16 @@ export default function Profile() {
     )
   );
   const [profileInfo, setProfileInfo] = useState(0);
+  const [BtechInfo, setBtechInfo] = useState(0);
   const [localProfileInfo, setLocalProfileInfo] = useState(0);
   const [degrees, setDegrees] = useState(initDegrees());
+  const [degrees2, setDegrees2] = useState(initDegrees());
   const [localDegrees, setLocalDegrees] = useState(initDegrees());
+  const [localDegrees2, setLocalDegrees2] = useState(initDegrees());
   const [degreeSize, setDegreeSize] = useState(0);
+  const [degreeSize2, setDegreeSize2] = useState(0);
   const [count, setCount] = useState(1);
+  const [count2, setCount2] = useState(1);
 
   function emptyFile(key) {
     let copy = { ...localProfileInfo };
@@ -89,10 +95,29 @@ export default function Profile() {
     setLocalProfileInfo(copy);
   }
 
+  function emptyFileDegree2(index, id) {
+    let copy = [...localDegrees2];
+    copy[id][String(index)] = null;
+    setLocalDegrees2(copy);
+  }
+
   function emptyFileDegree(index, id) {
     let copy = [...localDegrees];
     copy[id][String(index)] = null;
     setLocalDegrees(copy);
+  }
+
+  function syncLocalGlobalData2() {
+    let copy = { ...profileInfo };
+    setLocalProfileInfo(copy);
+
+    let copy2 = [];
+    for (let i = 0; i < 5; i++) {
+      let temp = { ...degrees2[i] };
+      copy2.push(temp);
+    }
+
+    setLocalDegrees2(copy2);
   }
 
   function syncLocalGlobalData() {
@@ -107,6 +132,17 @@ export default function Profile() {
 
     setLocalDegrees(copy2);
   }
+
+  const getDegreeSize2 = (degrees2) => {
+    if (degrees2 === null) return 0;
+    let cnt = 0;
+    for (var i = 0; i < degrees2.length; i++) {
+      if (degrees2[i][0] !== "") {
+        cnt = cnt + 1;
+      }
+    }
+    return cnt;
+  };
 
   const getDegreeSize = (degrees) => {
     if (degrees === null) return 0;
@@ -189,11 +225,17 @@ export default function Profile() {
           setLocalProfileInfo(copy2);
 
           setDegrees(convert2dArrayToJsonObjectArray(response.data.degrees));
+          setDegrees2(convert2dArrayToJsonObjectArray(response.data.degrees2));
           setLocalDegrees(
             convert2dArrayToJsonObjectArray(response.data.degrees)
           );
+          setLocalDegrees2(
+            convert2dArrayToJsonObjectArray(response.data.degrees2)
+          );
           setDegreeSize(getDegreeSize(response.data.degrees));
+          setDegreeSize2(getDegreeSize2(response.data.degrees2));
           setCount(Math.max(1, getDegreeSize(response.data.degrees)));
+          setCount2(Math.max(1, getDegreeSize2(response.data.degrees2)));
           setPercentageCgpaPattern(
             init_percentage_cgpa_pattern(
               copy3,
@@ -211,12 +253,28 @@ export default function Profile() {
     setLocalProfileInfo(copy);
   };
 
+  const handleLocalChangeDegrees2 = (index, key, event) => {
+    let copy = [...localDegrees2];
+    let temp = copy[index];
+    assign(temp, key, event.target.value);
+    copy[index] = temp;
+    setLocalDegrees2(copy);
+  };
+
   const handleLocalChangeDegrees = (index, key, event) => {
     let copy = [...localDegrees];
     let temp = copy[index];
     assign(temp, key, event.target.value);
     copy[index] = temp;
     setLocalDegrees(copy);
+  };
+
+  const removeLocalDegree2 = (index) => {
+    let copy = [...localDegrees2];
+    for (let i = 0; i < 10; i++) {
+      copy[index][String(i)] = "";
+    }
+    setLocalDegrees2(copy);
   };
 
   const removeLocalDegree = (index) => {
@@ -236,7 +294,7 @@ export default function Profile() {
   return (
     <>
       <DashboardNavBar currentFlag={2} />
-      <div className="flex">
+      <div className="flex justify-center">
         <div className="flex-2 my-20 mx-20 block">
           <img
             className="ring-2 h-40 w-40 ring-gray-700 rounded-full border border-black"
@@ -248,12 +306,13 @@ export default function Profile() {
             alt="Profile"
           />
         </div>
+      </div>
 
-        <div className="mr-20 mt-4 flex-1 bg-white shadow overflow-hidden sm:rounded-lg">
-          <div className="flex space-x-3 px-4 py-5 sm:px-6">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">
-              Personal Details
-            </h3>
+      <div className="flex my-10 mx-20 md:px-20  ">
+        <div className="my-2 flex-1 bg-white shadow overflow-hidden sm:rounded-lg">          <div className="flex space-x-3 px-4 py-5 sm:px-6">
+          <h3 className="text-lg leading-6 font-medium text-gray-900">
+            Personal Details
+          </h3>
 
             <PersonalInfo
               onChangeNationality={onChangeNationality}
@@ -263,15 +322,15 @@ export default function Profile() {
               syncLocalGlobalData={syncLocalGlobalData}
             />
 
-            <div
-              id="tooltip-animation"
-              role="tooltip"
-              className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
-            >
-              Edit Details
-              <div className="tooltip-arrow" data-popper-arrow></div>
-            </div>
+          <div
+            id="tooltip-animation"
+            role="tooltip"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+          >
+            Edit Details
+            <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
+        </div>
           <div className="border-t border-gray-300">
             <dl>
               <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
@@ -349,6 +408,12 @@ export default function Profile() {
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                   {profileInfo.is_pwd ? profileInfo.is_pwd : "Your PWD Status"}
                 </dd>
+                <dt className="text-sm font-medium text-gray-500">
+                  Student_Status
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  {profileInfo.status_student ? profileInfo.status_student : "Your Student Status"}
+                </dd>
               </div>
 
               {profileInfo.category_certificate_url ? (
@@ -392,7 +457,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="flex my-10 mx-20">
+      <div className="flex my-10 mx-20 md:px-20 ">
         <div className="my-2 flex-1 bg-white shadow overflow-hidden sm:rounded-lg">
           <div className="flex space-x-3 px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -506,7 +571,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="flex mx-20 mt-2 mb-10">
+      <div className="flex mx-20 mt-2 mb-10 md:px-20 ">
         <div className="my-2 flex-1 bg-white shadow overflow-hidden sm:rounded-lg">
           <div className="flex space-x-3 px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -673,37 +738,44 @@ export default function Profile() {
             </dl>
           </div>
           <div className="border-t border-gray-300">
-            {[...Array(degreeSize)].map((_, i) => (
-              <dl className="py-3 border-t border-gray-200" key={degrees[i].id}>
-                <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
-                  <dt className="text-sm font-medium text-gray-500">Degree</dt>
-                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {degrees[i]["1"]}, {degrees[i]["0"]}
-                  </dd>
+            <dl className="py-3 border-t border-gray-200">
+              <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">Degree</dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                {degrees[0]["1"] && degrees[0]["0"]
+                  ? `${degrees[0]["1"]}, ${degrees[0]["0"]}`
+                  : "Your B.Tech Degree"}
+                </dd>
 
-                  <dt className="text-sm font-medium text-gray-500">
-                    Board/University
-                  </dt>
-                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {degrees[i]["2"]}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
-                  <dt className="text-sm font-medium text-gray-500">
-                    Percentage/CGPA
-                  </dt>
-                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {degrees[i]["5"]}
-                  </dd>
+                <dt className="text-sm font-medium text-gray-500">
+                  University/Institute
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  {degrees[0]["2"]
+                    ? degrees[0]["2"]
+                    : "Your Branch"}
+                </dd>
+              </div>
+              <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">
+                  Percentage/CGPA
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  {degrees[0]["5"]
+                    ? degrees[0]["5"]
+                    : "Your Percentage/CGPA in B.Tech"}
+                </dd>
 
-                  <dt className="text-sm font-medium text-gray-500">
-                    Year of Passing
-                  </dt>
-                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {degrees[i]["3"]}
-                  </dd>
-                </div>
-                <div className="bg-white px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">
+                  Year of Passing
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  {degrees[0]["3"]
+                    ? degrees[0]["3"]
+                    : "Your Year of Completing B.Tech"}
+                </dd>
+              </div>
+              <div className="bg-white px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
                     Attachments
                   </dt>
@@ -720,7 +792,7 @@ export default function Profile() {
                       </div>
                       <div className="ml-4 flex-shrink-0">
                         <a
-                          href={degrees[i]["8"] ? degrees[i]["8"] : "#"}
+                          href={degrees[0]["8"] ? degrees[0]["8"] : "#"}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="font-medium text-indigo-600 hover:text-indigo-500"
@@ -741,7 +813,89 @@ export default function Profile() {
                       </div>
                       <div className="ml-4 flex-shrink-0">
                         <a
-                          href={degrees[i]["9"] ? degrees[i]["9"] : "#"}
+                          href={degrees[0]["9"] ? degrees[0]["9"] : "#"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-indigo-600 hover:text-indigo-500"
+                        >
+                          View
+                        </a>
+                      </div>
+                    </div>
+                  </dd>
+                </div>
+            </dl>
+          </div>
+          {degreeSize-1 > 0 && <div className="border-t border-gray-300">
+            {[...Array(degreeSize-1)].map((_, i) => (
+              <dl className="py-3 border-t border-gray-200" key={degrees[i].id}>
+                <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">Degree</dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {degrees[i+1]["1"]}, {degrees[i+1]["0"]}
+                  </dd>
+
+                  <dt className="text-sm font-medium text-gray-500">
+                    University/Institute
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {degrees[i+1]["2"]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Percentage/CGPA
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {degrees[i+1]["5"]}
+                  </dd>
+
+                  <dt className="text-sm font-medium text-gray-500">
+                    Year of Passing
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {degrees[i+1]["3"]}
+                  </dd>
+                </div>
+                <div className="bg-white px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Attachments
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <div className="pr-4 flex items-center justify-between text-sm">
+                      <div className="w-0 flex-1 flex items-center">
+                        <PaperClipIcon
+                          className="flex-shrink-0 h-5 w-5 text-gray-400"
+                          aria-hidden="true"
+                        />
+                        <span className="ml-2 flex-1 w-0 truncate">
+                          Gradesheet
+                        </span>
+                      </div>
+                      <div className="ml-4 flex-shrink-0">
+                        <a
+                          href={degrees[i+1]["8"] ? degrees[i+1]["8"] : "#"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-indigo-600 hover:text-indigo-500"
+                        >
+                          View
+                        </a>
+                      </div>
+                    </div>
+                  </dd>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <div className="pr-4 flex items-center justify-between text-sm">
+                      <div className="w-0 flex-1 flex items-center">
+                        <PaperClipIcon
+                          className="flex-shrink-0 h-5 w-5 text-gray-400"
+                          aria-hidden="true"
+                        />
+                        <span className="ml-2 flex-1 w-0 truncate">Degree</span>
+                      </div>
+                      <div className="ml-4 flex-shrink-0">
+                        <a
+                          href={degrees[i+1]["9"] ? degrees[i+1]["9"] : "#"}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="font-medium text-indigo-600 hover:text-indigo-500"
@@ -754,7 +908,93 @@ export default function Profile() {
                 </div>
               </dl>
             ))}
+          </div>}
+        </div>
+      </div>
+      <div className="flex mx-20 mt-2 mb-10 md:px-20">
+        <div className="my-2 flex-1 bg-white shadow overflow-hidden sm:rounded-lg">
+          <div className="flex space-x-3 px-4 py-5 sm:px-6">
+            <h3 className="text-lg leading-6 font-medium text-gray-900">
+              Experience Details
+            </h3>
+
+            <ExperienceDetails
+              count={count2}
+              setCount={setCount2}
+              localDegrees={localDegrees2}
+              localProfileInfo={localProfileInfo}
+              onChange={handleLocalChange}
+              onChangeDegrees={handleLocalChangeDegrees2}
+              syncLocalGlobalData={syncLocalGlobalData2}
+              emptyFile={emptyFile}
+              emptyFileDegree={emptyFileDegree2}
+              removeLocalDegree={removeLocalDegree2}
+            />
           </div>
+          {degreeSize2 > 0 && (
+            <div className="border-t border-gray-300">
+              {[...Array(degreeSize2)].map((_, i) => (
+                <dl
+                  className="py-3 border-t border-gray-200"
+                  key={degrees2[i].id}
+                >
+                  <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">
+                    Company/Organization
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {degrees2[i]["0"]}
+                    </dd>
+
+                    <dt className="text-sm font-medium text-gray-500">
+                    Title/Position
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {degrees2[i]["1"]}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">
+                      Year of Completion
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {degrees2[i]["2"]}
+                    </dd>
+                  </div>
+                  <div className="bg-white px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">
+                      Attachments
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      <div className="pr-4 flex items-center justify-between text-sm">
+                        <div className="w-0 flex-1 flex items-center">
+                          <PaperClipIcon
+                            className="flex-shrink-0 h-5 w-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                          <span className="ml-2 flex-1 w-0 truncate">
+                            Certificate
+                          </span>
+                        </div>
+                        <div className="ml-4 flex-shrink-0">
+                          <a
+                            href={
+                              degrees2[i]["8"] ? degrees2[i]["8"] : "#"
+                            }
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                          >
+                            View
+                          </a>
+                        </div>
+                      </div>
+                    </dd>
+                  </div>
+                </dl>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>
