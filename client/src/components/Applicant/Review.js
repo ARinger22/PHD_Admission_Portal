@@ -11,6 +11,7 @@ export default function Review(props) {
 
   const [profileInfo, setProfileInfo] = useState(0);
   const [degrees, setDegrees] = useState([]);
+  const [degrees2, setDegrees2] = useState([]);
 
   function convert2dArrayToJsonObjectArray(degrees) {
     if (degrees === null) return [];
@@ -41,6 +42,7 @@ export default function Review(props) {
         } else {
           setProfileInfo(response.data);
           setDegrees(convert2dArrayToJsonObjectArray(response.data.degrees));
+          setDegrees2(convert2dArrayToJsonObjectArray(response.data.degrees2));
         }
       })
       .catch((err) => console.log(err));
@@ -89,300 +91,317 @@ export default function Review(props) {
         </div>
         <div className="border-t border-gray-200">
           <dl>
-            {props.offering.offering_type === "Regular/External/Part Time" ? (<>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Whether you want to apply for interdisciplinary program?
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[42]}
-                </dd>
-              </div>
-              {props.details[42] === "YES" ? (<>
+            {props.offering.offering_type === "Regular/External/Part Time" ? (
+              <>
                 <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
-                    Name of interdisciplinary department
+                    Whether you want to apply for interdisciplinary program?
                   </dt>
                   <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {props.details[65]}
+                    {props.details[42]}
                   </dd>
                 </div>
-              </>) : (<></>)}
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Mode of Application:
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[43]}
-                </dd>
-              </div>
-              {props.offering.department === "Computer Science and Engineering" ?
-                (<>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      Area of Research (as per advertisement)
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[44]}
-                    </dd>
-                  </div>
-                </>) :
-                (<>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      Area of Research (as per advertisement)
-                    </dt>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      1st Preference
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[45]}
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      2nd Preference
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[46]}
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      3rd Preference
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[47]}
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      4th Preference
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[48]}
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      Specific area of research ( if known ):
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[49]}
-                    </dd>
-                  </div>
-                </>)}
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  NOC File
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[61].name}
-                </dd>
-              </div>
-
-            </>) : props.offering.offering_type === "Direct" ? (<>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Have you Finished your Bachelor's degree:
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[50]}
-                </dd>
-              </div>
-              {props.offering.department === "Computer Science and Engineering" ?
-                (<>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      Area of Research (as per advertisement)
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[44]}
-                    </dd>
-                  </div>
-                </>) :
-                (<>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      Area of Research (as per advertisement)
-                    </dt>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      1st Preference
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[45]}
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      2nd Preference
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[46]}
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      3rd Preference
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[47]}
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      4th Preference
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[48]}
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      Specific area of research ( if known ):
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[49]}
-                    </dd>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      Resume PDF
-                    </dt>
-                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      {props.details[62].name}
-                    </dd>
-                  </div>
-                </>)}
-            </>) : props.offering.offering_type === "Staff Member" ? (<>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Area of Research (as per advertisement)
-                </dt>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  1st Preference
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[45]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  2nd Preference
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[46]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  3rd Preference
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[47]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  4th Preference
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[48]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Specific area of research ( if known ):
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[49]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  NOC File
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[61].name}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Resume PDF
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[62].name}
-                </dd>
-              </div>
-            </>) : (<>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Name of PI and Project Number:
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[51]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Area of Research (as per advertisement)
-                </dt>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  1st Preference
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[45]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  2nd Preference
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[46]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  3rd Preference
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[47]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  4th Preference
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[48]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Specific area of research ( if known ):
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[49]}
-                </dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">
-                  Letter of recommendation from PI
-                </dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {props.details[63].name}
-                </dd>
-              </div>
-            </>)}
+                {props.details[42] === "YES" ? (
+                  <>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        Name of interdisciplinary department
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[65]}
+                      </dd>
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Mode of Application:
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[43]}
+                  </dd>
+                </div>
+                {props.offering.department ===
+                "Computer Science and Engineering" ? (
+                  <>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        Area of Research (as per advertisement)
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[44]}
+                      </dd>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        Area of Research (as per advertisement)
+                      </dt>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        1st Preference
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[45]}
+                      </dd>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        2nd Preference
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[46]}
+                      </dd>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        3rd Preference
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[47]}
+                      </dd>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        4th Preference
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[48]}
+                      </dd>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        Specific area of research ( if known ):
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[49]}
+                      </dd>
+                    </div>
+                  </>
+                )}
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    NOC File
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[61].name}
+                  </dd>
+                </div>
+              </>
+            ) : props.offering.offering_type === "Direct" ? (
+              <>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Have you Finished your Bachelor's degree:
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[50]}
+                  </dd>
+                </div>
+                {props.offering.department ===
+                "Computer Science and Engineering" ? (
+                  <>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        Area of Research (as per advertisement)
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[44]}
+                      </dd>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        Area of Research (as per advertisement)
+                      </dt>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        1st Preference
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[45]}
+                      </dd>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        2nd Preference
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[46]}
+                      </dd>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        3rd Preference
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[47]}
+                      </dd>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        4th Preference
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[48]}
+                      </dd>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        Specific area of research ( if known ):
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[49]}
+                      </dd>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt className="text-sm font-medium text-gray-500">
+                        Resume PDF
+                      </dt>
+                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {props.details[62].name}
+                      </dd>
+                    </div>
+                  </>
+                )}
+              </>
+            ) : props.offering.offering_type === "Staff Member" ? (
+              <>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Area of Research (as per advertisement)
+                  </dt>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    1st Preference
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[45]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    2nd Preference
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[46]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    3rd Preference
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[47]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    4th Preference
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[48]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Specific area of research ( if known ):
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[49]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    NOC File
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[61].name}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Resume PDF
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[62].name}
+                  </dd>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Name of PI and Project Number:
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[51]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Area of Research (as per advertisement)
+                  </dt>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    1st Preference
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[45]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    2nd Preference
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[46]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    3rd Preference
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[47]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    4th Preference
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[48]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Specific area of research ( if known ):
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[49]}
+                  </dd>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className="text-sm font-medium text-gray-500">
+                    Letter of recommendation from PI
+                  </dt>
+                  <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {props.details[63].name}
+                  </dd>
+                </div>
+              </>
+            )}
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">
                 Statement of Purpose
@@ -442,7 +461,12 @@ export default function Review(props) {
                 Qualifying Examination
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {props.offering.department === "Computer Science and Engineering" ? (<>GATE</>) : (<>{props.details[5]}</>)}
+                {props.offering.department ===
+                "Computer Science and Engineering" ? (
+                  <>GATE</>
+                ) : (
+                  <>{props.details[5]}</>
+                )}
               </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -467,7 +491,9 @@ export default function Review(props) {
             </div>
 
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Score in Qualifying Exam </dt>
+              <dt className="text-sm font-medium text-gray-500">
+                Score in Qualifying Exam{" "}
+              </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 {props.details[10]}
               </dd>
@@ -484,7 +510,12 @@ export default function Review(props) {
                 Qualifying Examination
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {props.offering.department === "Computer Science and Engineering" ? (<>GATE</>) : (<>{props.details[11]}</>)}
+                {props.offering.department ===
+                "Computer Science and Engineering" ? (
+                  <>GATE</>
+                ) : (
+                  <>{props.details[11]}</>
+                )}
               </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -562,7 +593,8 @@ export default function Review(props) {
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">
-                Self attested copies of GATE/CSIR/UGC/NET etc. as mentioned in the form
+                Self attested copies of GATE/CSIR/UGC/NET etc. as mentioned in
+                the form
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 {props.details[58].name}
@@ -589,17 +621,13 @@ export default function Review(props) {
               </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">
-                From
-              </dt>
+              <dt className="text-sm font-medium text-gray-500">From</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 {props.details[27]}
               </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">
-                To
-              </dt>
+              <dt className="text-sm font-medium text-gray-500">To</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 {props.details[28]}
               </dd>
@@ -629,17 +657,13 @@ export default function Review(props) {
               </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">
-                From
-              </dt>
+              <dt className="text-sm font-medium text-gray-500">From</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 {props.details[32]}
               </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">
-                To
-              </dt>
+              <dt className="text-sm font-medium text-gray-500">To</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 {props.details[33]}
               </dd>
@@ -654,14 +678,16 @@ export default function Review(props) {
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">
-                Total Year(s) of Experience as on the last date mentioned in advertisement
+                Total Year(s) of Experience as on the last date mentioned in
+                advertisement
               </dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 {props.details[35]}
               </dd>
             </div>
-            {props.offering.department === "Computer Science and Engineering" ?
-              (<>
+            {props.offering.department ===
+            "Computer Science and Engineering" ? (
+              <>
                 <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
                     IEEE/ACM/Springer conferences or journals
@@ -672,7 +698,8 @@ export default function Review(props) {
                 </div>
                 <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">
-                    National/International Conferences /Journals not mentioned in first field:
+                    National/International Conferences /Journals not mentioned
+                    in first field:
                   </dt>
                   <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                     {props.details[37]}
@@ -710,9 +737,10 @@ export default function Review(props) {
                     {props.details[41]}
                   </dd>
                 </div>
-              </>) :
-              (<>
-              </>)}
+              </>
+            ) : (
+              <></>
+            )}
           </dl>
         </div>
       </div>
@@ -807,6 +835,14 @@ export default function Review(props) {
               <dt className="text-sm font-medium text-gray-500">Gender</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 {profileInfo.gender}
+              </dd>
+            </div>
+            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-gray-500">
+                Student_status
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                {profileInfo.status_student}
               </dd>
             </div>
 
@@ -1185,7 +1221,83 @@ export default function Review(props) {
             </dl>
           ))}
         </div>
+      </div>
+      <div className="bg-white shadow-lg overflow-hidden sm:rounded-lg w-3/4 mx-12 mt-8 mb-8">
+        <div className="px-4 py-5 sm:px-6">
+          <h3 className="text-lg leading-6 font-medium text-gray-900">
+            Experience Details
+          </h3>
 
+          <p className="mt-1 max-w-2xl text-sm text-gray-500">
+            Please review your experience details.
+          </p>
+        </div>
+
+        <div className="border-t border-gray-300">
+          {degrees2.map((Degree) => (
+            <dl className="py-3 border-t border-gray-200" key={Degree.id}>
+              <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">
+                  Company/Organization
+                </dt>
+
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  {Degree["0"]}
+                </dd>
+
+                <dt className="text-sm font-medium text-gray-500">
+                  Title/Position
+                </dt>
+
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  {Degree["1"]}
+                </dd>
+              </div>
+
+              <div className="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">
+                  Year of Completion
+                </dt>
+
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  {Degree["2"]}
+                </dd>
+              </div>
+
+              <div className="bg-white px-4 py-3 sm:grid sm:grid-cols-6 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">
+                  Attachments
+                </dt>
+
+                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  <div className="pr-4 flex items-center justify-between text-sm">
+                    <div className="w-0 flex-1 flex items-center">
+                      <PaperClipIcon
+                        className="flex-shrink-0 h-5 w-5 text-gray-400"
+                        aria-hidden="true"
+                      />
+
+                      <span className="ml-2 flex-1 w-0 truncate">
+                        Certificate
+                      </span>
+                    </div>
+
+                    <div className="ml-4 flex-shrink-0">
+                      <a
+                        href={degrees["8"]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                      >
+                        View
+                      </a>
+                    </div>
+                  </div>
+                </dd>
+              </div>
+            </dl>
+          ))}
+        </div>
         <form onSubmit={props.handleSubmit(props.onSubmit)}>
           <div className="mt-1 mb-4 flex flex-wrap justify-between items-center">
             <button
@@ -1213,7 +1325,6 @@ export default function Review(props) {
               </button>
             )}
           </div>
-
         </form>
       </div>
     </div>

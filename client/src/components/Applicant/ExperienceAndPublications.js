@@ -406,7 +406,7 @@ function ExperienceAndPublications(props) {
                                                     <span style={{ color: "#ff0000" }}> *</span>
                                                 </label>
 
-                                                {!props.details[60].name && (
+                                                {!props.details[60] && (
                                                     <>
                                                         <input
                                                             className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -458,7 +458,7 @@ function ExperienceAndPublications(props) {
                                                     </>
                                                 )}
 
-                                                {props.details[60].name && (
+                                                {props.details[60] && (
                                                     <>
                                                         <div className="flex border-2 mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                             <input
@@ -466,7 +466,7 @@ function ExperienceAndPublications(props) {
                                                                 id="publications_pdf"
                                                                 name="publications_pdf"
                                                                 type="text"
-                                                                value={props.details[60].name}
+                                                                value={props.details[60]}
                                                                 required
                                                                 readOnly
                                                             />
@@ -501,6 +501,7 @@ function ExperienceAndPublications(props) {
                                             </button>
                                             <button
                                                 type="submit"
+                                                onClick={() => props.onSubmit()}
                                                 className="border border-transparent shadow-sm text-sm font-medium rounded-md text-white justify-center block py-2 px-4 items-center bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                 style={{ width: "120px", height: "40px" }} // Adjust width and height as needed
                                             >

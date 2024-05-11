@@ -192,19 +192,6 @@ function QualifyingExamDetails(props) {
                           className="block text-sm font-medium text-gray-700"
                         >
                           Score
-                          {/* <HtmlTooltip
-                            title={
-                              <React.Fragment>
-                                <Typography color="inherit"></Typography>
-                                {
-                                  "Please ensure that you have entered your GATE score, and not GATE marks."
-                                }{" "}
-                                <br />
-                              </React.Fragment>
-                            }
-                          >
-                            <HelpIcon fontSize="small"></HelpIcon>
-                          </HtmlTooltip> */}
                         </label>
                         <input
                           type="number"
@@ -366,19 +353,6 @@ function QualifyingExamDetails(props) {
                           className="block text-sm font-medium text-gray-700"
                         >
                           Score
-                          {/* <HtmlTooltip
-                            title={
-                              <React.Fragment>
-                                <Typography color="inherit"></Typography>
-                                {
-                                  "Please ensure that you have entered your GATE score, and not GATE marks."
-                                }{" "}
-                                <br />
-                              </React.Fragment>
-                            }
-                          >
-                            <HelpIcon fontSize="small"></HelpIcon>
-                          </HtmlTooltip> */}
                         </label>
                         <input
                           type="number"
@@ -407,6 +381,8 @@ function QualifyingExamDetails(props) {
                           (<> <input
                             id="qualifying_examination_3"
                             name="qualifying_examination_3"
+                            value={props.details[17]}
+                            onChange={(event) => props.onChange(event, 17)}
                             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                           ></input>
                           </>) :
@@ -495,19 +471,6 @@ function QualifyingExamDetails(props) {
                           className="block text-sm font-medium text-gray-700"
                         >
                           Score
-                          {/* <HtmlTooltip
-                            title={
-                              <React.Fragment>
-                                <Typography color="inherit"></Typography>
-                                {
-                                  "Please ensure that you have entered your GATE score, and not GATE marks."
-                                }{" "}
-                                <br />
-                              </React.Fragment>
-                            }
-                          >
-                            <HelpIcon fontSize="small"></HelpIcon>
-                          </HtmlTooltip> */}
                         </label>
                         <input
                           type="number"
@@ -533,7 +496,7 @@ function QualifyingExamDetails(props) {
                           Self attested copies of GATE/CSIR/UGC/NET etc. as mentioned in the form
                           <span style={{ color: "#ff0000" }}> *</span>
                         </label>
-                        {!props.details[58].name && (
+                        {!props.details[58] && (
                           <>
                             <input
                               className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -585,7 +548,7 @@ function QualifyingExamDetails(props) {
                           </>
                         )}
 
-                        {props.details[58].name && (
+                        {props.details[58] && (
                           <>
                             <div className="flex border-2 mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                               <input
@@ -593,7 +556,7 @@ function QualifyingExamDetails(props) {
                                 id="exam_result_pdf"
                                 name="exam_result_pdf"
                                 type="text"
-                                value={props.details[58].name}
+                                value={props.details[58]}
                                 required
                                 readOnly
                               />
@@ -626,6 +589,7 @@ function QualifyingExamDetails(props) {
                       </button>
                       <button
                         type="submit"
+                        onClick={() => props.onSubmit()}
                         className="border border-transparent shadow-sm text-sm font-medium rounded-md text-white justify-center block py-2 px-4 items-center bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         style={{ width: "120px", height: "40px" }} // Adjust width and height as needed
                       >

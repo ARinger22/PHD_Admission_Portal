@@ -113,7 +113,9 @@ export default function ViewSubmittedApplicationAdmin() {
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Amount</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Amount
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.amount}
                 </dd>
@@ -127,7 +129,9 @@ export default function ViewSubmittedApplicationAdmin() {
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Bank</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Bank
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.bank}
                 </dd>
@@ -174,429 +178,447 @@ export default function ViewSubmittedApplicationAdmin() {
                   {applicationInfo.date_of_transaction}
                 </dd>
               </div>
-              {applicationInfo.applying_for ===  "Regular/External/Part Time" ? (<>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Whether you want to apply for interdisciplinary program?
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.interdisciplinary_prog_check}
-                  </dd>
-                </div>
-                {applicationInfo.interdisciplinary_prog_check === "YES" ? (<>
+              {applicationInfo.applying_for === "Regular/External/Part Time" ? (
+                <>
                   <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                      Name of interdisciplinary department
+                      Whether you want to apply for interdisciplinary program?
                     </dt>
                     <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                      {applicationInfo.interdisciplinary_prog_name}
+                      {applicationInfo.interdisciplinary_prog_check}
                     </dd>
                   </div>
-                </>) : (<></>)}
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Mode of Application:
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.mode_of_app}
-                  </dd>
-                </div>
-                {applicationInfo.department_name ===  "Computer Science and Engineering" ?
-                  (<>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        Area of Research (as per advertisement)
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.area_of_research}
-                      </dd>
-                    </div>
-                  </>) :
-                  (<>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        Area of Research (as per advertisement)
-                      </dt>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        1st Preference
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.first_pref}
-                      </dd>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        2nd Preference
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.second_pref}
-                      </dd>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        3rd Preference
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.third_pref}
-                      </dd>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        4th Preference
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.fourth_pref}
-                      </dd>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        Specific area of research ( if known ):
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.specific_research_area}
-                      </dd>
-                    </div>
-                  </>)}
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    NOC
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                      <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                        <div className="w-0 flex-1 flex items-center">
-                          <PaperClipIcon
-                            className="flex-shrink-0 h-5 w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-2 flex-1 w-0 truncate">
-                            noc.pdf
-                          </span>
-                        </div>
-                        <div className="ml-4 flex-shrink-0">
-                          <a
-                            href={
-                              applicationInfo.noc_pdf
-                                ? applicationInfo.noc_pdf
-                                : "#"
-                            }
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                          >
-                            View
-                          </a>
+                  {applicationInfo.interdisciplinary_prog_check === "YES" ? (
+                    <>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          Name of interdisciplinary department
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.interdisciplinary_prog_name}
+                        </dd>
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Mode of Application:
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.mode_of_app}
+                    </dd>
+                  </div>
+                  {applicationInfo.department_name ===
+                  "Computer Science and Engineering" ? (
+                    <>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          Area of Research (as per advertisement)
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.area_of_research}
+                        </dd>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          Area of Research (as per advertisement)
+                        </dt>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          1st Preference
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.first_pref}
+                        </dd>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          2nd Preference
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.second_pref}
+                        </dd>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          3rd Preference
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.third_pref}
+                        </dd>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          4th Preference
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.fourth_pref}
+                        </dd>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          Specific area of research ( if known ):
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.specific_research_area}
+                        </dd>
+                      </div>
+                    </>
+                  )}
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      NOC
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
+                        <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                          <div className="w-0 flex-1 flex items-center">
+                            <PaperClipIcon
+                              className="flex-shrink-0 h-5 w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                            <span className="ml-2 flex-1 w-0 truncate">
+                              noc.pdf
+                            </span>
+                          </div>
+                          <div className="ml-4 flex-shrink-0">
+                            <a
+                              href={
+                                applicationInfo.noc_pdf
+                                  ? applicationInfo.noc_pdf
+                                  : "#"
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                            >
+                              View
+                            </a>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </dd>
-                </div>
-              </>) : applicationInfo.applying_for ===  "Direct" ? (<>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Have you Finished your Bachelor's degree:
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.bachelor_degree_complete}
-                  </dd>
-                </div>
-                {applicationInfo.department_name === "Computer Science and Engineering" ?
-                  (<>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        Area of Research (as per advertisement)
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.area_of_research}
-                      </dd>
-                    </div>
-                  </>) :
-                  (<>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        Area of Research (as per advertisement)
-                      </dt>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        1st Preference
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.first_pref}
-                      </dd>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        2nd Preference
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.second_pref}
-                      </dd>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        3rd Preference
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.third_pref}
-                      </dd>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        4th Preference
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.fourth_pref}
-                      </dd>
-                    </div>
-                    <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                        Specific area of research ( if known ):
-                      </dt>
-                      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                        {applicationInfo.specific_research_area}
-                      </dd>
-                    </div>
-                  </>)}
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Resume
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                      <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                        <div className="w-0 flex-1 flex items-center">
-                          <PaperClipIcon
-                            className="flex-shrink-0 h-5 w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-2 flex-1 w-0 truncate">
-                            resume.pdf
-                          </span>
-                        </div>
-                        <div className="ml-4 flex-shrink-0">
-                          <a
-                            href={
-                              applicationInfo.resume_pdf
-                                ? applicationInfo.resume_pdf
-                                : "#"
-                            }
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                          >
-                            View
-                          </a>
+                    </dd>
+                  </div>
+                </>
+              ) : applicationInfo.applying_for === "Direct" ? (
+                <>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Have you Finished your Bachelor's degree:
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.bachelor_degree_complete}
+                    </dd>
+                  </div>
+                  {applicationInfo.department_name ===
+                  "Computer Science and Engineering" ? (
+                    <>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          Area of Research (as per advertisement)
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.area_of_research}
+                        </dd>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          Area of Research (as per advertisement)
+                        </dt>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          1st Preference
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.first_pref}
+                        </dd>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          2nd Preference
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.second_pref}
+                        </dd>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          3rd Preference
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.third_pref}
+                        </dd>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          4th Preference
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.fourth_pref}
+                        </dd>
+                      </div>
+                      <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                          Specific area of research ( if known ):
+                        </dt>
+                        <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                          {applicationInfo.specific_research_area}
+                        </dd>
+                      </div>
+                    </>
+                  )}
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Resume
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
+                        <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                          <div className="w-0 flex-1 flex items-center">
+                            <PaperClipIcon
+                              className="flex-shrink-0 h-5 w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                            <span className="ml-2 flex-1 w-0 truncate">
+                              resume.pdf
+                            </span>
+                          </div>
+                          <div className="ml-4 flex-shrink-0">
+                            <a
+                              href={
+                                applicationInfo.resume_pdf
+                                  ? applicationInfo.resume_pdf
+                                  : "#"
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                            >
+                              View
+                            </a>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </dd>
-                </div>
-              </>) : applicationInfo.applying_for ===  "Staff Member" ? (<>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Area of Research (as per advertisement)
-                  </dt>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    1st Preference
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.first_pref}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    2nd Preference
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.second_pref}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    3rd Preference
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.third_pref}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    4th Preference
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.fourth_pref}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Specific area of research ( if known ):
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.specific_research_area}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    NOC file
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                      <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                        <div className="w-0 flex-1 flex items-center">
-                          <PaperClipIcon
-                            className="flex-shrink-0 h-5 w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-2 flex-1 w-0 truncate">
-                            noc_pdf
-                          </span>
-                        </div>
-                        <div className="ml-4 flex-shrink-0">
-                          <a
-                            href={
-                              applicationInfo.noc_pdf
-                                ? applicationInfo.noc_pdf
-                                : "#"
-                            }
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                          >
-                            View
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Resume
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                      <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                        <div className="w-0 flex-1 flex items-center">
-                          <PaperClipIcon
-                            className="flex-shrink-0 h-5 w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-2 flex-1 w-0 truncate">
-                            resume_pdf
-                          </span>
-                        </div>
-                        <div className="ml-4 flex-shrink-0">
-                          <a
-                            href={
-                              applicationInfo.resume_pdf
-                                ? applicationInfo.resume_pdf
-                                : "#"
-                            }
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                          >
-                            View
-                          </a>
+                    </dd>
+                  </div>
+                </>
+              ) : applicationInfo.applying_for === "Staff Member" ? (
+                <>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Area of Research (as per advertisement)
+                    </dt>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      1st Preference
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.first_pref}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      2nd Preference
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.second_pref}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      3rd Preference
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.third_pref}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      4th Preference
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.fourth_pref}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Specific area of research ( if known ):
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.specific_research_area}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      NOC file
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
+                        <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                          <div className="w-0 flex-1 flex items-center">
+                            <PaperClipIcon
+                              className="flex-shrink-0 h-5 w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                            <span className="ml-2 flex-1 w-0 truncate">
+                              noc_pdf
+                            </span>
+                          </div>
+                          <div className="ml-4 flex-shrink-0">
+                            <a
+                              href={
+                                applicationInfo.noc_pdf
+                                  ? applicationInfo.noc_pdf
+                                  : "#"
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                            >
+                              View
+                            </a>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </dd>
-                </div>
-              </>) : (<>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Name of PI and Project Number:
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.pi_project_number}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Area of Research (as per advertisement)
-                  </dt>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    1st Preference
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.first_pref}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    2nd Preference
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.second_pref}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    3rd Preference
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.third_pref}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    4th Preference
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.fourth_pref}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Specific area of research ( if known ):
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    {applicationInfo.specific_research_area}
-                  </dd>
-                </div>
-                <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                    Letter of recommendation from PI
-                  </dt>
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                      <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                        <div className="w-0 flex-1 flex items-center">
-                          <PaperClipIcon
-                            className="flex-shrink-0 h-5 w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-2 flex-1 w-0 truncate">
-                            PI_letter
-                          </span>
-                        </div>
-                        <div className="ml-4 flex-shrink-0">
-                          <a
-                            href={
-                              applicationInfo.letter_pi_pdf
-                                ? applicationInfo.letter_pi_pdf
-                                : "#"
-                            }
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                          >
-                            View
-                          </a>
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Resume
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
+                        <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                          <div className="w-0 flex-1 flex items-center">
+                            <PaperClipIcon
+                              className="flex-shrink-0 h-5 w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                            <span className="ml-2 flex-1 w-0 truncate">
+                              resume_pdf
+                            </span>
+                          </div>
+                          <div className="ml-4 flex-shrink-0">
+                            <a
+                              href={
+                                applicationInfo.resume_pdf
+                                  ? applicationInfo.resume_pdf
+                                  : "#"
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                            >
+                              View
+                            </a>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </dd>
-                </div>
-              </>)}
+                    </dd>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Name of PI and Project Number:
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.pi_project_number}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Area of Research (as per advertisement)
+                    </dt>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      1st Preference
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.first_pref}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      2nd Preference
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.second_pref}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      3rd Preference
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.third_pref}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      4th Preference
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.fourth_pref}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Specific area of research ( if known ):
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      {applicationInfo.specific_research_area}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      Letter of recommendation from PI
+                    </dt>
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
+                        <div className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                          <div className="w-0 flex-1 flex items-center">
+                            <PaperClipIcon
+                              className="flex-shrink-0 h-5 w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                            <span className="ml-2 flex-1 w-0 truncate">
+                              PI_letter
+                            </span>
+                          </div>
+                          <div className="ml-4 flex-shrink-0">
+                            <a
+                              href={
+                                applicationInfo.letter_pi_pdf
+                                  ? applicationInfo.letter_pi_pdf
+                                  : "#"
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                            >
+                              View
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
+                  </div>
+                </>
+              )}
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
                   State of Purpose
@@ -636,17 +658,26 @@ export default function ViewSubmittedApplicationAdmin() {
                   Qualifying Examination
                 </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                  {applicationInfo.department_name ===  "Computer Science and Engineering" ? (<>GATE</>) : (<>{applicationInfo.qualifying_examination_1}</>)}
+                  {applicationInfo.department_name ===
+                  "Computer Science and Engineering" ? (
+                    <>GATE</>
+                  ) : (
+                    <>{applicationInfo.qualifying_examination_1}</>
+                  )}
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Branch </dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Branch{" "}
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.branch_code_1}
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Year </dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Year{" "}
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.year_1}
                 </dd>
@@ -661,14 +692,18 @@ export default function ViewSubmittedApplicationAdmin() {
               </div>
 
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Score in Qualifying Exam </dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Score in Qualifying Exam{" "}
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.score_1}
                 </dd>
               </div>
 
               <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Valid Upto</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Valid Upto
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.valid_upto_1}
                 </dd>
@@ -678,17 +713,26 @@ export default function ViewSubmittedApplicationAdmin() {
                   Qualifying Examination
                 </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                  {applicationInfo.department_name ===  "Computer Science and Engineering" ? (<>GATE</>) : (<>{applicationInfo.qualifying_examination_2}</>)}
+                  {applicationInfo.department_name ===
+                  "Computer Science and Engineering" ? (
+                    <>GATE</>
+                  ) : (
+                    <>{applicationInfo.qualifying_examination_2}</>
+                  )}
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Branch </dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Branch{" "}
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.branch_code_2}
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Year </dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Year{" "}
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.year_2}
                 </dd>
@@ -702,13 +746,17 @@ export default function ViewSubmittedApplicationAdmin() {
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Score</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Score
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.score_2}
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Valid Upto</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Valid Upto
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.valid_upto_2}
                 </dd>
@@ -722,14 +770,18 @@ export default function ViewSubmittedApplicationAdmin() {
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Branch </dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Branch{" "}
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.branch_code_3}
                 </dd>
               </div>
 
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Year</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Year
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.year_3}
                 </dd>
@@ -743,20 +795,25 @@ export default function ViewSubmittedApplicationAdmin() {
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Score </dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Score{" "}
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.score_3}
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Valid Upto</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Valid Upto
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.valid_upto_3}
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                  Self attested copies of GATE/CSIR/UGC/NET etc. as mentioned in the form
+                  Self attested copies of GATE/CSIR/UGC/NET etc. as mentioned in
+                  the form
                 </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   <div className="border border-gray-200 rounded-md divide-y divide-gray-200">
@@ -870,14 +927,16 @@ export default function ViewSubmittedApplicationAdmin() {
               </div>
               <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                  Total Year(s) of Experience as on the last date mentioned in advertisement
+                  Total Year(s) of Experience as on the last date mentioned in
+                  advertisement
                 </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.total_years_of_service}
                 </dd>
               </div>
-              {applicationInfo.department_name ===  "Computer Science and Engineering" ?
-                (<>
+              {applicationInfo.department_name ===
+              "Computer Science and Engineering" ? (
+                <>
                   <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
                       IEEE/ACM/Springer conferences or journals
@@ -888,7 +947,8 @@ export default function ViewSubmittedApplicationAdmin() {
                   </div>
                   <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-                      National/International Conferences /Journals not mentioned in first field:
+                      National/International Conferences /Journals not mentioned
+                      in first field:
                     </dt>
                     <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                       {applicationInfo.natn_itnl_journals}
@@ -926,9 +986,10 @@ export default function ViewSubmittedApplicationAdmin() {
                       {applicationInfo.stat_of_purpose}
                     </dd>
                   </div>
-                </>) :
-                (<>
-                </>)}
+                </>
+              ) : (
+                <></>
+              )}
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
                   Pulications
@@ -977,7 +1038,9 @@ export default function ViewSubmittedApplicationAdmin() {
           <div className="border-t border-gray-200">
             <dl>
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Full name</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Full name
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.full_name}
                 </dd>
@@ -1007,7 +1070,9 @@ export default function ViewSubmittedApplicationAdmin() {
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Category</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Category
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.category}
                 </dd>
@@ -1045,14 +1110,18 @@ export default function ViewSubmittedApplicationAdmin() {
               </div>
 
               <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Gender</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Gender
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.gender}
                 </dd>
               </div>
 
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Student Status</dt>
+                <dt className="text-sm font-medium text-gray-500">
+                  Student Status
+                </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                   {applicationInfo.status_student}
                 </dd>
@@ -1060,35 +1129,38 @@ export default function ViewSubmittedApplicationAdmin() {
 
               <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Uploads</dt>
-              <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Uploads</dt>
-                {applicationInfo.category_certificate_url && (
-                  <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-                    <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                        <div className="w-0 flex-1 flex items-center">
-                          <PaperClipIcon
-                            className="flex-shrink-0 h-5 w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-2 flex-1 w-0 truncate">
-                            Category_Certificate
-                          </span>
-                        </div>
-                        <div className="ml-4 flex-shrink-0">
-                          <a
-                            href={applicationInfo.category_certificate_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                          >
-                            View
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                  </dd>
-                )}
+                <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                    Uploads
+                  </dt>
+                  {applicationInfo.category_certificate_url && (
+                    <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                      <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
+                        <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                          <div className="w-0 flex-1 flex items-center">
+                            <PaperClipIcon
+                              className="flex-shrink-0 h-5 w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                            <span className="ml-2 flex-1 w-0 truncate">
+                              Category_Certificate
+                            </span>
+                          </div>
+                          <div className="ml-4 flex-shrink-0">
+                            <a
+                              href={applicationInfo.category_certificate_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                            >
+                              View
+                            </a>
+                          </div>
+                        </li>
+                      </ul>
+                    </dd>
+                  )}
+                </div>
               </div>
             </dl>
           </div>
@@ -1114,13 +1186,17 @@ export default function ViewSubmittedApplicationAdmin() {
                     </dd>
                   </div>
                   <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">City</dt>
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      City
+                    </dt>
                     <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                       {applicationInfo.communication_city}
                     </dd>
                   </div>
                   <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">State</dt>
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      State
+                    </dt>
                     <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                       {applicationInfo.communication_state}
                     </dd>
@@ -1151,13 +1227,17 @@ export default function ViewSubmittedApplicationAdmin() {
                     </dd>
                   </div>
                   <div className="bg-white px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">City</dt>
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      City
+                    </dt>
                     <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                       {applicationInfo.permanent_city}
                     </dd>
                   </div>
                   <div className="bg-gray-50 px-4 py-5 lg:grid lg:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">State</dt>
+                    <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                      State
+                    </dt>
                     <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                       {applicationInfo.permanent_state}
                     </dd>
@@ -1219,77 +1299,80 @@ export default function ViewSubmittedApplicationAdmin() {
           </div>
 
           <div className="border-t border-gray-300">
-  <dl className="py-3 border-t border-gray-200">
-    <div className="bg-gray-50 px-4 py-3 lg:grid lg:grid-cols-6 sm:gap-4 sm:px-6">
-      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Degree</dt>
-      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-        {applicationInfo.degree_10th}
-        {/* llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllioyunguoyfyutftibfuiygfyuegnwyoxungeiougxmegqiuxgm */}
-      </dd>
+            <dl className="py-3 border-t border-gray-200">
+              <div className="bg-gray-50 px-4 py-3 lg:grid lg:grid-cols-6 sm:gap-4 sm:px-6">
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Degree
+                </dt>
+                <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                  {applicationInfo.degree_10th}
+                  {/* llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllioyunguoyfyutftibfuiygfyuegnwyoxungeiougxmegqiuxgm */}
+                </dd>
 
-      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-        Board/University
-      </dt>
-      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2 whitespace-normal break-words">
-        {applicationInfo.board_10th}
-        {/* llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllioyunguoyfyutftibfuiygfyuegnwyoxungeiougxmegqiuxgm  ipquymgr  8yewqpfiyfv8yeq fn8oyxwf  nyouwom yfx */}
-      </dd>
-    </div>
-    <div className="bg-gray-50 px-4 pb-3 lg:grid lg:grid-cols-6 sm:gap-4 sm:px-6">
-      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-        Percentage/CGPA
-      </dt>
-      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-        {applicationInfo.percentage_cgpa_value_10th}
-      </dd>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Board/University
+                </dt>
+                <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2 whitespace-normal break-words">
+                  {applicationInfo.board_10th}
+                  {/* llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllioyunguoyfyutftibfuiygfyuegnwyoxungeiougxmegqiuxgm  ipquymgr  8yewqpfiyfv8yeq fn8oyxwf  nyouwom yfx */}
+                </dd>
+              </div>
+              <div className="bg-gray-50 px-4 pb-3 lg:grid lg:grid-cols-6 sm:gap-4 sm:px-6">
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Percentage/CGPA
+                </dt>
+                <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                  {applicationInfo.percentage_cgpa_value_10th}
+                </dd>
 
-      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-        Year of Passing
-      </dt>
-      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-        {applicationInfo.year_of_passing_10th}
-      </dd>
-    </div>
-    <div className="bg-white px-4 py-3 lg:grid lg:grid-cols-6 sm:gap-4 sm:px-6">
-      <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
-        Attachments
-      </dt>
-      <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
-        <div className="mr-4 flex items-center justify-between text-sm">
-          <div className="w-0 flex-1 flex items-center">
-            <PaperClipIcon
-              className="flex-shrink-0 h-5 w-5 text-gray-400"
-              aria-hidden="true"
-            />
-            <span className="ml-2 flex-1 w-0 truncate">
-              10th_marksheet
-            </span>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Year of Passing
+                </dt>
+                <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                  {applicationInfo.year_of_passing_10th}
+                </dd>
+              </div>
+              <div className="bg-white px-4 py-3 lg:grid lg:grid-cols-6 sm:gap-4 sm:px-6">
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Attachments
+                </dt>
+                <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
+                  <div className="mr-4 flex items-center justify-between text-sm">
+                    <div className="w-0 flex-1 flex items-center">
+                      <PaperClipIcon
+                        className="flex-shrink-0 h-5 w-5 text-gray-400"
+                        aria-hidden="true"
+                      />
+                      <span className="ml-2 flex-1 w-0 truncate">
+                        10th_marksheet
+                      </span>
+                    </div>
+                    <div className="ml-4 flex-shrink-0">
+                      <a
+                        href={
+                          applicationInfo.marksheet_10th_url
+                            ? applicationInfo.marksheet_10th_url
+                            : "#"
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                      >
+                        View
+                      </a>
+                    </div>
+                  </div>
+                </dd>
+              </div>
+            </dl>
           </div>
-          <div className="ml-4 flex-shrink-0">
-            <a
-              href={
-                applicationInfo.marksheet_10th_url
-                  ? applicationInfo.marksheet_10th_url
-                  : "#"
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              View
-            </a>
-          </div>
-        </div>
-      </dd>
-    </div>
-  </dl>
-</div>
-
 
           <div className="border-t border-gray-300">
             <dl className="py-3 border-t border-gray-200">
               <div className="bg-gray-50 px-4 py-3 lg:grid lg:grid-cols-6 sm:gap-4 sm:px-6">
-                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Degree</dt>
+                <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                  Degree
+                </dt>
                 <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                   {applicationInfo.degree_12th}
                 </dd>
@@ -1355,7 +1438,9 @@ export default function ViewSubmittedApplicationAdmin() {
             {degrees.map((Degree) => (
               <dl className="py-3 border-t border-gray-200" key={Degree.id}>
                 <div className="bg-gray-50 px-4 py-3 lg:grid lg:grid-cols-6 sm:gap-4 sm:px-6">
-                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">Degree</dt>
+                  <dt className=" whitespace-normal break-words text-sm font-medium text-gray-500">
+                    Degree
+                  </dt>
                   <dd className=" whitespace-normal break-words mt-1 text-sm text-gray-900 sm:mt-0 lg:col-span-2">
                     {Degree["1"]}, {Degree["0"]}
                   </dd>
