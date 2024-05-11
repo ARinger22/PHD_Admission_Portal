@@ -15,7 +15,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "30%",
+  width: "80%",
   bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: 5,
@@ -119,7 +119,7 @@ export default function UploadExcelModal() {
       <Box sx={style}>
         <div
           id="modal-modal-description"
-          className="relative w-full max-w-2xl h-full md:h-auto" >
+          className="relative w-full  h-full md:h-auto" >
           <div className="bg-white rounded-lg shadow relative">
             <div className="flex items-start justify-between p-5 border-b rounded-t">
               <h3 className="text-xl font-semibold">Upload File</h3>
@@ -144,8 +144,8 @@ export default function UploadExcelModal() {
 
             </div>
             <form onSubmit={onSubmit} >
-              <div className="px-6 pt-6 pb-2 space-y-6">
-                <div className="bg-white rounded-lg shadow-lg p-8">
+              <div className="px-3 pt-3 pb-4 space-y-8 w-full">
+                <div className="bg-white rounded-lg shadow-lg p-5">
                   <h3 className="flex text-2xl font-bold text-gray-900 mb-4 text-center">Upload Excel file <span className="flex flex-col text-red-600 mx-0.5">*</span> </h3>
                   <div className="flex flex-col items-center">
 

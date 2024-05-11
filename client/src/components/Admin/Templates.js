@@ -36,8 +36,8 @@ export default function Templates() {
   return (
     <div className="bg-gray-100 p-10">
       <div className="shadow-xl bg-white min-h-screen rounded-lg p-4 sm:p-6 xl:p-8">
-        <div className="flex justify-between">
-          <h3 className="text-xl leading-none font-bold text-gray-900 mb-10">
+        <div className="flex flex-col sm:flex-row sm:justify-between">
+          <h3 className="text-xl leading-none font-bold text-gray-900 mb-6 sm:mb-0">
             List of Templates
           </h3>
 
@@ -45,7 +45,7 @@ export default function Templates() {
             <button
               type="button"
               onClick={() => setIsAddingTemplate(true)}
-              className="focus:outline-none h-11 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center"
+              className="focus:outline-none h-11 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center mb-4 sm:mb-0 max-w-[150px]"
             >
               <svg
                 className="-ml-1 mr-2 h-6 w-6"
@@ -100,8 +100,8 @@ export default function Templates() {
                     {template.email_id === "default@template"
                       ? "DEFAULT"
                       : template.email_id === "global@template"
-                      ? "OTHERS"
-                      : "PERSONAL"}
+                        ? "OTHERS"
+                        : "PERSONAL"}
                   </td>
                   <td className="border-t-0 align-middle text-sm font-normal text-gray-900 whitespace-nowrap py-4">
                     <div
@@ -120,8 +120,8 @@ export default function Templates() {
                     <div className="flex gap-2 justify-end">
                       <ViewTemplateModal template={template} />
                       {template.email_id === "default@template" ||
-                      (template.email_id === "global@template" &&
-                        admin_type !== "0") ? (
+                        (template.email_id === "global@template" &&
+                          admin_type !== "0") ? (
                         <DeleteTemplateModal
                           template={template}
                           isActive={false}

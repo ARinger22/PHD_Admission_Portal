@@ -4,7 +4,7 @@ import crossPic from "../../images/red_cross.svg";
 function ExperienceAndPublications(props) {
     return (
         <div>
-            <div className="px-6 py-6 mx-20 my-20 bg-[#f3f4f6] rounded-2xl">
+            <div className="px-8 py-8 md:px-20 md:py-20 mx-auto my-10 md:my-20 bg-[#f3f4f6] rounded-2xl">
                 <div className="mt-10 sm:mt-0">
                     <div className="md:grid md:grid-cols-3 md:gap-6">
                         <div className="md:col-span-1">
@@ -77,7 +77,7 @@ function ExperienceAndPublications(props) {
                                                     ></input>
                                                 </div>
                                             </>)}
-                                            
+
                                             {props.offering.offering_type === "Regular/External/Part Time" ?
                                                 (<>
                                                     <div className="col-span-6 sm:col-span-3">
@@ -1179,16 +1179,17 @@ function ExperienceAndPublications(props) {
                                         </div>
                                     </div>
 
-                                    <div className="px-4 bg-white sm:p-6">
-                                        <div className="my-4 grid grid-cols-6 gap-6">
+                                    <div className="px-4 bg-white sm:p-6 h-full flex flex-col justify-between items-center"> {/* Using flexbox to center the button */}
+                                        <div className="my-4">
                                             <button
                                                 type="submit"
-                                                className="col-start-6 col-end-7 border border-transparent shadow-sm text-sm font-medium rounded-md text-white justify-center block py-2 px-4 mr-2 items-center bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                className="border border-transparent shadow-sm text-sm font-medium rounded-md text-white justify-center block py-2 px-4 mr-2 items-center bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                             >
                                                 Next
                                             </button>
                                         </div>
                                     </div>
+
                                 </div>
                             </form>
                         </div>

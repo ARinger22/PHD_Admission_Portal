@@ -16,7 +16,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "40%",
+  width: "80%",
   bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: 5,
@@ -27,7 +27,6 @@ export default function AddOfferingModal(props) {
   const navigate = useNavigate();
   const [applicationChecked, setApplicationChecked] = useState(false);
   const [draftChecked, setDraftChecked] = useState(false);
-  // const [offering_type, setOfferingType] = useState("default");
   const { register, handleSubmit, reset } = useForm();
   const admin_type = getAdminType();
 
@@ -60,7 +59,16 @@ export default function AddOfferingModal(props) {
     formData.append("department", data.department);
     formData.append("specialization", data.specialization);
     formData.append("eligibility", data.eligibility);
-    formData.append("deadline", data.deadline);
+    const currentDate = new Date();
+
+    const deadlineDate = new Date(data.deadline);
+    if (deadlineDate > currentDate) {
+      formData.append("deadline", data.deadline);
+    } else {
+      window.alert("Deadline should be after the current day.");
+      setIsLoading(false);
+      return;
+    }
     formData.append("is_accepting_applications", applicationChecked);
     formData.append("is_draft_mode", draftChecked);
     formData.append("cycle_id", props.cycle_id);
@@ -81,7 +89,7 @@ export default function AddOfferingModal(props) {
   };
 
   return (
-    <div>
+    <div className="relative">
       <Tooltip title="Add">
         <button
           type="button"
@@ -112,189 +120,160 @@ export default function AddOfferingModal(props) {
         <Box sx={style}>
           <div
             id="modal-modal-description"
-            className="relative w-full max-w-2xl h-full md:h-auto"
+            className="relative w-full h-[80vh] md:h-auto overflow-y-auto"
           >
-            <div className="bg-white rounded-lg shadow relative">
-              <div className="flex items-start justify-between p-5 border-b rounded-t">
-                <h3 className="text-xl font-semibold">Add offering</h3>
-                <button
-                  onClick={handleClose}
-                  type="button"
-                  className="text-gray-400 bg-transparent focus:outline-none hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                      clipRule="evenodd"
+            <div className="bg-white rounded-lg shadow relative p-5">
+              <h3 className="text-xl font-semibold mb-6">Add offering</h3>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      htmlFor="department"
+                      className="text-sm font-medium text-gray-900 block mb-2"
+                    >
+                      Department
+                    </label>
+                    <select
+                      id="department"
+                      {...register("department")}
+                      required
+                      className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                    >
+                      <option value="">- Select -</option>
+                      {props.department.map((dept) => (
+                        <option key={dept} value={dept}>
+                          {dept}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="specialization"
+                      className="text-sm font-medium text-gray-900 block mb-2"
+                    >
+                      Specialization
+                    </label>
+                    <input
+                      type="text"
+                      {...register("specialization")}
+                      id="specialization"
+                      className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                      required
                     />
-                  </svg>
-                </button>
-              </div>
-              <div className="px-6 pt-6 pb-2 space-y-6">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="department"
-                        className="text-sm font-medium text-gray-900 block mb-2"
-                      >
-                        Department
-                      </label>
-
-                      <select
-                        id="department"
-                        {...register("department")}
-                        required
-                        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                      >
-                        <option value="">- Select -</option>
-                        {props.department.map((dept) => {
-                          return (
-                            <option key={dept} value={dept}>
-                              {dept}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="specialization"
-                        className="text-sm font-medium text-gray-900 block mb-2"
-                      >
-                        Specialization
-                      </label>
-                      <input
-                        type="text"
-                        {...register("specialization")}
-                        id="specialization"
-                        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                        required
-                      />
-                    </div>
-                    <div className="col-span-full sm:col-span-full">
-                      <label
-                        htmlFor="offering_type"
-                        className="text-sm font-medium text-gray-900 block mb-2"
-                      >
-                        Offering Type
-                       <select
-                        id="offering_type"
-                        name="offering_type"
-                        {...register("offering_type")}
-                        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                        required
-                      >
-                        <option value="">None</option>
-                        <option value="Regular/External/Part Time">Regular/External/Part Time</option>
-                        <option value="Direct">Direct</option>
-                        <option value="Staff Member">Staff Member</option>
-                        <option value="Project Staff">Project Staff</option>
-                        </select>
-                      </label>
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="deadline"
-                        className="text-sm font-medium text-gray-900 block mb-2"
-                      >
-                        Deadline
-                      </label>
-                      <input
-                        type="date"
-                        required
-                        id="deadline"
-                        {...register("deadline")}
-                        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                      />
-                    </div>
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="eligibility"
-                        className="text-sm font-medium text-gray-900 block mb-2"
-                      >
-                        Eligibility
-                      </label>
-                      <textarea
-                        required
-                        {...register("eligibility")}
-                        id="eligibility"
-                        rows={6}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
-                        defaultValue={""}
-                      />
-                    </div>
                   </div>
-                  <div className="mt-5 items-start h-[1px] bg-gray-200" />
-                  <div className="flex justify-between">
-                    {admin_type === "0" ? (
-                      <>
-                        <div className="p-3">
-                          <FormControlLabel
-                            control={
-                              <Toggle
-                                checked={applicationChecked}
-                                onChange={handleChange1}
-                                sx={{ m: 1 }}
-                              />
-                            }
-                            label="Accept Applications"
-                          />
-                        </div>
-                        <div className="p-3">
-                          <FormControlLabel
-                            control={
-                              <Toggle
-                                checked={draftChecked}
-                                onChange={handleChange2}
-                                sx={{ m: 1 }}
-                              />
-                            }
-                            label="Draft Mode"
-                          />
-                        </div>
-                      </>
-                    ) : (
-                      <h3 className="italic text-base font-normal text-gray-500 mt-4 mb-1">
-                        This offering will be added in draft mode.
-                      </h3>
-                    )}
-
-                    <div className="p-3 border-t border-gray-200 rounded-b">
-                      {!isLoading ? (
-                        <button
-                          className="text-white focus:outline-none block w-30 h-15 bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm text-center"
-                          type="submit"
-                        >
-                          <div className="w-25 h-5 mx-5 my-2.5">
-                            <p>Add Offering</p>
-                          </div>
-                        </button>
-                      ) : (
-                        <button
-                          className="text-white focus:outline-none block w-30 h-15 bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm text-center"
-                          type="submit"
-                          disabled
-                        >
-                          <div className="w-20 h-5 mx-5 my-2.5">
-                            <img
-                              className="h-5 w-5 mx-auto"
-                              alt="spinner"
-                              src={spinner}
+                  <div>
+                    <label
+                      htmlFor="offering_type"
+                      className="text-sm font-medium text-gray-900 block mb-2"
+                    >
+                      Offering Type
+                    </label>
+                    <select
+                      id="offering_type"
+                      name="offering_type"
+                      {...register("offering_type")}
+                      className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                      required
+                    >
+                      <option value="">None</option>
+                      <option value="Regular/External/Part Time">
+                        Regular/External/Part Time
+                      </option>
+                      <option value="Direct">Direct</option>
+                      <option value="Staff Member">Staff Member</option>
+                      <option value="Project Staff">Project Staff</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="deadline"
+                      className="text-sm font-medium text-gray-900 block mb-2"
+                    >
+                      Deadline
+                    </label>
+                    <input
+                      type="date"
+                      required
+                      id="deadline"
+                      {...register("deadline")}
+                      className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                    />
+                  </div>
+                  <div className="col-span-full">
+                    <label
+                      htmlFor="eligibility"
+                      className="text-sm font-medium text-gray-900 block mb-2"
+                    >
+                      Eligibility
+                    </label>
+                    <textarea
+                      required
+                      {...register("eligibility")}
+                      id="eligibility"
+                      rows={6}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
+                      defaultValue={""}
+                    />
+                  </div>
+                </div>
+                <div className="mt-6">
+                  {admin_type === "0" ? (
+                    <>
+                      <div className="p-3">
+                        <FormControlLabel
+                          control={
+                            <Toggle
+                              checked={applicationChecked}
+                              onChange={handleChange1}
+                              sx={{ m: 1 }}
                             />
-                          </div>
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </form>
-              </div>
+                          }
+                          label="Accept Applications"
+                        />
+                      </div>
+                      <div className="p-3">
+                        <FormControlLabel
+                          control={
+                            <Toggle
+                              checked={draftChecked}
+                              onChange={handleChange2}
+                              sx={{ m: 1 }}
+                            />
+                          }
+                          label="Draft Mode"
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <h3 className="italic text-base font-normal text-gray-500 mt-4 mb-1">
+                      This offering will be added in draft mode.
+                    </h3>
+                  )}
+                </div>
+                <div className="p-3 border-t border-gray-200 rounded-b">
+                  {!isLoading ? (
+                    <button
+                      className="text-white focus:outline-none block w-full bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm py-2"
+                      type="submit"
+                    >
+                      Add Offering
+                    </button>
+                  ) : (
+                    <button
+                      className="text-white focus:outline-none block w-full bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm py-2"
+                      type="submit"
+                      disabled
+                    >
+                      <img
+                        className="h-5 w-5 mx-auto"
+                        alt="spinner"
+                        src={spinner}
+                      />
+                    </button>
+                  )}
+                </div>
+              </form>
             </div>
           </div>
         </Box>

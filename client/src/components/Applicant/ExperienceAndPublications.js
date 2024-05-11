@@ -5,7 +5,7 @@ function ExperienceAndPublications(props) {
 
     return (
         <div>
-            <div className="px-6 py-6 mx-20 my-20 bg-[#f3f4f6] rounded-2xl">
+            <div className="px-8 py-8 md:px-20 md:py-20 mx-auto my-10 md:my-20 bg-[#f3f4f6] rounded-2xl">
                 <div className="mt-10 sm:mt-0">
                     <div className="md:grid md:grid-cols-3 md:gap-6">
                         <div className="md:col-span-1">
@@ -135,9 +135,9 @@ function ExperienceAndPublications(props) {
                                                             }
                                                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                                         />
-                                                        
+
                                                     </>)}
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -300,7 +300,7 @@ function ExperienceAndPublications(props) {
                                                         <label
                                                             className="block text-sm font-medium text-gray-700"
                                                         >
-                                                            National/International Conferences /Journals not mentioned in first field: 
+                                                            National/International Conferences /Journals not mentioned in first field:
                                                         </label>
                                                         <input
                                                             type="text"
@@ -308,7 +308,7 @@ function ExperienceAndPublications(props) {
                                                             value={props.details[37]}
                                                             id="natn_itnl_journals"
                                                             onChange={(event) =>
-                                                                props.onChange(event,37)
+                                                                props.onChange(event, 37)
                                                             }
                                                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                                         />
@@ -337,7 +337,7 @@ function ExperienceAndPublications(props) {
                                                         <label
                                                             className="block text-sm font-medium text-gray-700"
                                                         >
-                                                            Indian patents applied/granted 
+                                                            Indian patents applied/granted
                                                             <span style={{ color: "#ff0000" }}> **applied means you have the patent application number</span>
                                                         </label>
                                                         <input
@@ -368,7 +368,7 @@ function ExperienceAndPublications(props) {
                                                                 className="resize-none shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                                             />
                                                         </div>
-                                                        
+
                                                     </div>
                                                     <div className="col-span-full sm:col-span-full">
                                                         <label
@@ -387,14 +387,14 @@ function ExperienceAndPublications(props) {
                                                                 className="resize-none shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                                             />
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>
-                                            </>) :
-                                            (<>
+                                        </>) :
+                                        (<>
                                         </>)}
-                                    
+
                                     <div className="px-4 bg-white sm:p-6">
                                         <div className="grid grid-cols-6 gap-6">
                                             <div className="col-span-full sm:col-span-full">
@@ -490,17 +490,19 @@ function ExperienceAndPublications(props) {
                                     </div>
 
                                     <div className="px-4 bg-white sm:p-6">
-                                        <div className="my-4 grid grid-cols-6 gap-6">
+                                        <div className="my-4 flex flex-wrap justify-between items-center">
                                             <button
                                                 type="button"
                                                 onClick={() => props.decreasePageNumber()}
-                                                className="col-start-1 col-end-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white justify-center block py-2 px-4 mr-2 items-center bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                className="border border-transparent shadow-sm text-sm font-medium rounded-md text-white justify-center block py-2 px-4 mr-2 mb-2 sm:mb-0 sm:mr-4 items-center bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                style={{ width: "120px", height: "40px" }} // Adjust width and height as needed
                                             >
                                                 Back
                                             </button>
                                             <button
                                                 type="submit"
-                                                className="col-start-6 col-end-7 border border-transparent shadow-sm text-sm font-medium rounded-md text-white justify-center block py-2 px-4 mr-2 items-center bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                className="border border-transparent shadow-sm text-sm font-medium rounded-md text-white justify-center block py-2 px-4 items-center bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                style={{ width: "120px", height: "40px" }} // Adjust width and height as needed
                                             >
                                                 Next
                                             </button>

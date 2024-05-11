@@ -114,7 +114,7 @@ export default function EditOfferingModal(props) {
   };
 
   return (
-    <div>
+    <div className="">
       <Tooltip title="Edit">
         <button
           type="button"
@@ -141,12 +141,11 @@ export default function EditOfferingModal(props) {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        
       >
-        <Box sx={style}>
-          <div
-            className="relative w-full max-w-2xl h-full md:h-auto"
-            id="modal-modal-description"
-          >
+        <Box sx={style} style={{"minWidth":"300px"}}>
+            <div className="relative w-full max-w-3xl h-[70vh] md:h-auto overflow-y-auto" id="modal-modal-description" >
+          
             <div className="bg-white rounded-lg shadow relative">
               <div className="flex items-start justify-between p-5 border-b rounded-t">
                 <h3 className="text-xl font-bold">Edit offering</h3>
@@ -271,7 +270,7 @@ export default function EditOfferingModal(props) {
                   </div>
 
                   <div className="mt-5 items-start h-[1px] bg-gray-200" />
-                  <div className="flex justify-between">
+                  <div className="flex flex-wrap md:flex-no-wrap justify-between">
                     <div className="p-3">
                       <FormControlLabel
                         control={

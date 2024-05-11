@@ -125,12 +125,12 @@ export default function CommunicationDetails(props) {
             </div>
 
             <div className="overflow-y-auto overflow-x-hidden overscroll-none h-5/6">
-              <div className="px-6 py-6 mx-10 bg-[#f3f4f6]">
+              <div className="px-4 py-4 md:px-10 md:py-10 mx-auto my-10 md:my-20 bg-[#f3f4f6] rounded-2xl ">
                 <div className="mt-10 sm:mt-0">
                   <div className="md:grid md:grid-cols-3 md:gap-6">
                     <div className="md:col-span-1">
-                      <div className="px-4 sm:px-0">
-                        <h3 className="ml-5 mb-2 text-left text-2xl font-medium leading-6 text-gray-900">
+                      <div className="text-left"> {/* Updated class */}
+                        <h3 className="ml-5 mb-2 text-2xl font-medium leading-6 text-gray-900">
                           Communication Details
                         </h3>
                         <p className="ml-5 text-left mt-1 text-gray-600 text-base">
@@ -138,11 +138,12 @@ export default function CommunicationDetails(props) {
                         </p>
                       </div>
                     </div>
+
                     <div className="mt-5 md:mt-0 md:col-span-2">
                       <form onSubmit={onSubmit}>
                         <div className="shadow overflow-hidden sm:rounded-md">
                           <div className="px-4 py-5 bg-white sm:p-6">
-                            <div className="outline rounded outline-[#f3f4f6] px-8 py-8 grid grid-cols-6 gap-6">
+                            <div className="grid grid-cols-6 gap-6">
                               <div className="col-span-full sm:col-span-full">
                                 <label
                                   htmlFor="communication_address"
@@ -249,13 +250,13 @@ export default function CommunicationDetails(props) {
                               </div>
                             </div>
 
-                            <div className="mt-8 outline rounded outline-[#f3f4f6] px-8 py-8 grid grid-cols-6 gap-6">
+                            <div className="grid grid-cols-6 gap-6">
                               <div className="col-span-full sm:col-span-full">
                                 <label
                                   htmlFor="permanent_address"
                                   className="block text-sm font-medium text-gray-700"
                                 >
-                                  Permanent Address 
+                                  Permanent Address
                                   <span style={{ color: "#ff0000" }}> *</span>
                                 </label>
                                 <div className="mt-1">
@@ -325,7 +326,7 @@ export default function CommunicationDetails(props) {
                                   htmlFor="permanent_pincode"
                                   className="block text-sm font-medium text-gray-700"
                                 >
-                                 Permanent Address PIN Code
+                                  Permanent Address PIN Code
                                   <span style={{ color: "#ff0000" }}> *</span>
                                 </label>
                                 <input
@@ -343,7 +344,7 @@ export default function CommunicationDetails(props) {
                                 />
                               </div>
                             </div>
-                            <div className="mt-8 outline rounded outline-[#f3f4f6] px-8 py-8 grid grid-cols-6 gap-6">
+                            <div className="grid grid-cols-6 gap-6">
                               <div className="col-span-6 sm:col-span-3">
                                 <label
                                   htmlFor="email"
@@ -372,7 +373,7 @@ export default function CommunicationDetails(props) {
                                 </label>
                                 <input
                                   type="text"
-                                  required 
+                                  required
                                   value={props.localProfileInfo.mobile_number}
                                   pattern="[0-9]{10}"
                                   onChange={(event) =>

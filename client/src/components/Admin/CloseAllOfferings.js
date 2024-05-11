@@ -15,7 +15,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "35%",
+  width: "60%",
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
@@ -56,7 +56,7 @@ export default function CloseAllOfferings(props) {
         <button
           onClick={handleOpen}
           type="button"
-          className="focus:outline-none w-1/2 mr-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium inline-flex items-center justify-center rounded-lg text-sm my-4 px-3 py-2 text-center sm:w-auto"
+          className="focus:outline-none mr-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium inline-flex items-center justify-center rounded-lg text-sm my-4 px-3 py-2 text-center sm:w-auto"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

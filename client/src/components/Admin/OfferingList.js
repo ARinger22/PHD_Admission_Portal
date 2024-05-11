@@ -117,9 +117,9 @@ export default function OfferingList() {
                 </nav>
               </div>
             </div>
-            <div className="flex justify-between mt-2">
-              <div className="flex">
-                <div className="mr-3 w-24">
+            <div className="flex flex-wrap md:flex-no-wrap justify-between mt-2">
+              <div className="flex flex-wrap md:flex-no-wrap mt-2">
+                <div className="mr-3 w-24 mx-2 mb-2">
                   <select
                     id="sort-order"
                     name="sort-order"
@@ -174,7 +174,7 @@ export default function OfferingList() {
                     <option value="2">Z to A</option>
                   </select>
                 </div>
-                <div className="sm:pr-3 mb-4 sm:mb-0">
+                <div className="sm:pr-3 mb-2 sm:mb-0 mx-2">
                   <label htmlFor="products-search" className="sr-only">
                     Search
                   </label>
@@ -199,7 +199,7 @@ export default function OfferingList() {
                     />
                   </div>
                 </div>
-                <div className="w-36">
+                <div className="w-36 mx-2">
                   <label
                     htmlFor="searchType"
                     className="block text-sm font-medium text-gray-700"
@@ -222,14 +222,16 @@ export default function OfferingList() {
                   </select>
                 </div>
               </div>
-              <AddOfferingModal
-                cycle_id={params.cycle_id}
-                department={department}
-              />
+              <div className="mt-3 mx-2">
+                <AddOfferingModal
+                  cycle_id={params.cycle_id}
+                  department={department}
+                />
+              </div>
             </div>
-            <div className="flex justify-between">
-              <div className="flex">
-                <span className="mr-2 mt-7 text-sm">Show</span>
+            <div className="flex flex-wrap md:flex-no-wrap justify-between mt-2">
+              <div className="flex flex-wrap md:flex-no-wrap mt-2">
+                <span className="mx-2 mt-7 text-sm">Show</span>
                 <div className="mt-4 w-20">
                   <label
                     htmlFor="limit"
@@ -255,12 +257,12 @@ export default function OfferingList() {
                     <option value="50">50</option>
                   </select>
                 </div>
-                <span className="ml-2 mt-7 text-sm">entries</span>
+                <span className="ml-1 mt-7 text-sm">entries</span>
                 <div>
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ml-4 mr-2 relative inline-flex items-center mt-4 px-8 py-3 overflow-hidden text-white bg-cyan-600 rounded-lg group active:bg-cyan-500 focus:outline-none focus:ring"
+                    className="mx-2 mr-2 relative inline-flex items-center mt-4 px-8 py-3 overflow-hidden text-white bg-cyan-600 rounded-lg group active:bg-cyan-500 focus:outline-none focus:ring"
                     href={brochureUrl}
                   >
                     <span className="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4">
@@ -279,7 +281,7 @@ export default function OfferingList() {
                         />
                       </svg>
                     </span>
-                    <span className="text-sm font-medium transition-all group-hover:mr-4">
+                    <span className="mx-2 text-sm font-medium transition-all group-hover:mr-4">
                       Brochure
                     </span>
                   </a>
@@ -287,7 +289,7 @@ export default function OfferingList() {
               </div>
               <div className="flex gap-1">
                 {admin_type === "0" ? (
-                  <div className="flex">
+                  <div className="flex mx-2 mt-2">
                     <OpenAllOfferings
                       cycleName={cycleName}
                       cycle_id={params.cycle_id}
@@ -394,7 +396,7 @@ export default function OfferingList() {
                             data={offerings[i].eligibility}
                           />
                         </td>
-                        
+
                         <td className="p-4 text-left text-sm text-gray-500 tracking-wider">
                           {new Date(offerings[i].deadline).toLocaleDateString(
                             "en-GB"

@@ -42,7 +42,6 @@ export default function PersonalInfo(props) {
 
     const currentYear = currentDate.getFullYear();
     const dob = new Date(props.localProfileInfo.date_of_birth);
-
     const nameRegex = /^[a-zA-Z\s]+$/;
     const uppercaseRegex = /^[A-Z\s]+$/;
     const lowercaseRegex = /^[a-z\s]+$/;
@@ -64,41 +63,7 @@ export default function PersonalInfo(props) {
     }
     setdobAlert(false);
     const blood = props.localProfileInfo.blood_group;
-    const possBl = [
-      "O+",
-      "o+",
-      "O-",
-      "o-",
-      "A+",
-      "a+",
-      "A-",
-      "a-",
-      "B+",
-      "b+",
-      "B-",
-      "b-",
-      "AB+",
-      "ab+",
-      "AB-",
-      "ab-",
-      "O +",
-      "o +",
-      "O -",
-      "o -",
-      "A +",
-      "a +",
-      "A -",
-      "a -",
-      "B +",
-      "b +",
-      "B -",
-      "b -",
-      "AB +",
-      "ab +",
-      "AB -",
-      "ab -",
-      "Other",
-    ];
+    const possBl = ['O+', 'o+', 'O-', 'o-', 'A+', 'a+', 'A-', 'a-', 'B+', 'b+', 'B-', 'b-', 'AB+', 'ab+', 'AB-', 'ab-', 'O +', 'o +', 'O -', 'o -', 'A +', 'a +', 'A -', 'a -', 'B +', 'b +', 'B -', 'b -', 'AB +', 'ab +', 'AB -', 'ab -', 'Other'];
     if (!possBl.includes(blood)) {
       setmarAlert(true);
       return;
@@ -253,7 +218,7 @@ export default function PersonalInfo(props) {
             </div>
 
             <div className="overflow-y-auto overflow-x-hidden overscroll-none h-5/6">
-              <div className="px-6 py-6 mx-8 bg-[#f3f4f6]">
+              <div className="px-4 py-4 md:px-10 md:py-10 mx-auto my-10 md:my-20 bg-[#f3f4f6] rounded-2xl ">
                 <div className="mt-10 sm:mt-0">
                   <div className="md:grid md:grid-cols-3 md:gap-6">
                     {/* Personal Details Heading and Sub Heading  */}
@@ -301,6 +266,7 @@ export default function PersonalInfo(props) {
                                       Please use capital and small English
                                       letters (i.e. a-z, A-Z)
                                     </Alert>
+                                    <Alert severity="warning">Please use capital and small English letters (i.e. a-z, A-Z)</Alert>
                                   )}
                                 </div>
                               </div>
@@ -463,6 +429,7 @@ export default function PersonalInfo(props) {
                                   <Alert severity="warning">
                                     Please use valid D.O.B.
                                   </Alert>
+                                  <Alert severity="warning">Please use valid D.O.B.</Alert>
                                 )}
                               </div>
 
@@ -519,7 +486,7 @@ export default function PersonalInfo(props) {
                                   <option value="ST">ST</option>
                                 </select>
                               </div>
-                              {props.localProfileInfo.category !== "GEN" ? (
+                              {props.localProfileInfo.category !== 'GEN' ? (
                                 <>
                                   <div className="col-span-6 sm:col-span-3">
                                     <label
@@ -822,6 +789,7 @@ export default function PersonalInfo(props) {
                                       'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-',
                                       'Other'
                                     </Alert>
+                                    <Alert severity="warning">Please use these bloods only: 'O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'Other'</Alert>
                                   )}
                                 </div>
                               </div>
