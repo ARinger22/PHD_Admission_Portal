@@ -12,8 +12,13 @@ import { Link } from "react-router-dom";
 import screenSpinner from "../../images/2300-spinner.gif";
 import ExperienceAndPublications from "./ExperienceAndPublications.js";
 import GeneralApplicationDetails from "./GeneralApplicationDetails";
+import { useLocation } from 'react-router-dom';
 
 function ApplicantionDetails() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const data = searchParams.get("data");
+  const decodedData = data ? JSON.parse(decodeURIComponent(data)) : null;
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const { handleSubmit } = useForm();
@@ -176,6 +181,8 @@ function ApplicantionDetails() {
     formData.append("resume_pdf", applicant_details[62]);
     formData.append("letter_PI_pdf", applicant_details[63]);
     formData.append("sop_pdf", applicant_details[64]);
+    formData.append("page",page)
+    formData.append("stat", 0);
 
     Axios.post("/save-application-info", formData, {
       headers: {
@@ -186,7 +193,8 @@ function ApplicantionDetails() {
         if (response.data === 1) {
           navigate("/logout");
         } else {
-          navigate("/success");
+          if(page === 6) navigate("/success");
+          else setIsLoading(false);
         }
       })
       .catch((err) => console.log(err));
@@ -250,21 +258,25 @@ function ApplicantionDetails() {
               {
                 1: (
                   <GeneralApplicationDetails
+                    decodedData = {decodedData}
                     increasePageNumber={increasePageNumber}
                     offering={offering}
                     details={applicant_details}
                     onChange={handleApplicantDetailsChange}
+                    onSubmit={handleApplicationSubmit}
                     handleFileSubmit={handleFileSubmit}
                     emptyFileIndex={emptyFileIndex}
                   />
                 ),
                 2: (
                 <QualifyingExamDetails
+                  decodedData = {decodedData}
                   increasePageNumber={increasePageNumber}
                   decreasePageNumber={decreasePageNumber}
                   offering={offering}
                   details={applicant_details}
                   onChange={handleApplicantDetailsChange}
+                  onSubmit={handleApplicationSubmit}
                   handleFileSubmit={handleFileSubmit}
                   emptyFileIndex={emptyFileIndex}
                 />
@@ -276,6 +288,7 @@ function ApplicantionDetails() {
                     offering={offering}
                     details={applicant_details}
                     onChange={handleApplicantDetailsChange}
+                    onSubmit={handleApplicationSubmit}
                     handleFileSubmit={handleFileSubmit}
                     emptyFileIndex={emptyFileIndex}
                   />
@@ -287,6 +300,7 @@ function ApplicantionDetails() {
                   decreasePageNumber={decreasePageNumber}
                   details={applicant_details}
                   onChange={handleApplicantDetailsChange}
+                  onSubmit={handleApplicationSubmit}
                   handleFileSubmit={handleFileSubmit}
                   emptyFileIndex={emptyFileIndex}
                   categoryFees={categoryFees}
@@ -299,6 +313,7 @@ function ApplicantionDetails() {
                   full_name={full_name}
                   details={applicant_details}
                   onChange={handleApplicantDetailsChange}
+                  onSubmit={handleApplicationSubmit}
                   handleFileSubmit={handleFileSubmit}
                   emptyFileIndex={emptyFileIndex}
                 />

@@ -13,7 +13,7 @@ export default function ApplicantHomePage() {
   const navigate = useNavigate();
   const [applications, setApplications] = useState([]);
   const [Apps, setApps] = useState([]);
-
+  const [data, setData] = useState(0);
   const [isFetching, setIsFetching] = useState(true);
 
   // 1 = not complete and show alert and transition
@@ -78,6 +78,7 @@ export default function ApplicantHomePage() {
             response.data.board_10th
           ) {
             setProfileComplete(3);
+            setData(response.data);
           } else {
             setProfileComplete(1);
           }
@@ -205,21 +206,30 @@ export default function ApplicantHomePage() {
                               )}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-            {isProfileComplete !== 3 ||
-            application.is_accepting_applications === false ||
-          Apps.some((app) => app.offering_id === application.offering_id)  ? (
-              <button className="text-gray-300" disabled>
-                Applied
-              </button>
-            ) : (
-              <Link
-                to={"/apply/" + application.offering_id}
-                className="text-indigo-600 hover:text-indigo-900"
-              >
-                Apply
-              </Link>
-            )}
-          </td>
+                              {isProfileComplete !== 3 ||
+                              application.is_accepting_applications === false ||
+                              Apps.some(
+                                (app) =>
+                                  app.offering_id === application.offering_id
+                              ) ? (
+                                <button className="text-gray-300" disabled>
+                                  Applied
+                                </button>
+                              ) : (
+                                <Link
+                                  to={{
+                                    pathname:
+                                      "/apply/" + application.offering_id,
+                                    search: `?data=${encodeURIComponent(
+                                      JSON.stringify(data)
+                                    )}`,
+                                  }}
+                                  className="text-indigo-600 hover:text-indigo-900"
+                                >
+                                  Apply
+                                </Link>
+                              )}
+                            </td>
                           </tr>
                         ))}
                       </tbody>

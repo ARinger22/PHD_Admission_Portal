@@ -616,7 +616,7 @@ function ExperienceAndPublications(props) {
                                                     >
                                                         Upload your NOC (if applying for admission other than regular PhD)
                                                     </label>
-                                                    {!props.details[61].name && (
+                                                    {!props.details[61] && (
                                                         <>
                                                             <input
                                                                 className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -667,7 +667,7 @@ function ExperienceAndPublications(props) {
                                                         </>
                                                     )}
 
-                                                    {props.details[61].name && (
+                                                    {props.details[61] && (
                                                         <>
                                                             <div className="flex border-2 mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                                 <input
@@ -675,7 +675,7 @@ function ExperienceAndPublications(props) {
                                                                     id="noc_pdf"
                                                                     name="noc_pdf"
                                                                     type="text"
-                                                                    value={props.details[61].name}
+                                                                    value={props.details[61]}
                                                                     readOnly
                                                                 />
                                                                 <button
@@ -710,7 +710,7 @@ function ExperienceAndPublications(props) {
                                                             <span style={{ color: "#ff0000" }}> *</span>
                                                         </label>
 
-                                                        {!props.details[62].name && (
+                                                        {!props.details[62] && (
                                                             <>
                                                                 <input
                                                                     className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -762,7 +762,7 @@ function ExperienceAndPublications(props) {
                                                             </>
                                                         )}
 
-                                                        {props.details[62].name && (
+                                                        {props.details[62] && (
                                                             <>
                                                                 <div className="flex border-2 mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                                     <input
@@ -770,7 +770,7 @@ function ExperienceAndPublications(props) {
                                                                         id="resume_pdf"
                                                                         name="resume_pdf"
                                                                         type="text"
-                                                                        value={props.details[62].name}
+                                                                        value={props.details[62]}
                                                                         required
                                                                         readOnly
                                                                     />
@@ -806,7 +806,7 @@ function ExperienceAndPublications(props) {
                                                                 <span style={{ color: "#ff0000" }}> *</span>
                                                             </label>
 
-                                                            {!props.details[61].name && (
+                                                            {!props.details[61] && (
                                                                 <>
                                                                     <input
                                                                         className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -856,7 +856,7 @@ function ExperienceAndPublications(props) {
                                                                 </>
                                                             )}
 
-                                                            {props.details[61].name && (
+                                                            {props.details[61] && (
                                                                 <>
                                                                     <div className="flex border-2 mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                                         <input
@@ -864,7 +864,7 @@ function ExperienceAndPublications(props) {
                                                                             id="noc_pdf"
                                                                             name="noc_pdf"
                                                                             type="text"
-                                                                            value={props.details[61].name}
+                                                                            value={props.details[61]}
                                                                             required
                                                                             readOnly
                                                                         />
@@ -897,7 +897,7 @@ function ExperienceAndPublications(props) {
                                                                 <span style={{ color: "#ff0000" }}> *</span>
                                                             </label>
 
-                                                            {!props.details[62].name && (
+                                                            {!props.details[62] && (
                                                                 <>
                                                                     <input
                                                                         className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -949,7 +949,7 @@ function ExperienceAndPublications(props) {
                                                                 </>
                                                             )}
 
-                                                            {props.details[62].name && (
+                                                            {props.details[62] && (
                                                                 <>
                                                                     <div className="flex border-2 mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                                         <input
@@ -957,7 +957,7 @@ function ExperienceAndPublications(props) {
                                                                             id="resume_pdf"
                                                                             name="resume_pdf"
                                                                             type="text"
-                                                                            value={props.details[62].name}
+                                                                            value={props.details[62]}
                                                                             readOnly
                                                                             required
                                                                         />
@@ -993,7 +993,7 @@ function ExperienceAndPublications(props) {
                                                                     <span style={{ color: "#ff0000" }}> *</span>
                                                                 </label>
 
-                                                                {!props.details[63].name && (
+                                                                {!props.details[63] && (
                                                                     <>
                                                                         <input
                                                                             className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -1045,7 +1045,7 @@ function ExperienceAndPublications(props) {
                                                                     </>
                                                                 )}
 
-                                                                {props.details[63].name && (
+                                                                {props.details[63] && (
                                                                     <>
                                                                         <div className="flex border-2 mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                                             <input
@@ -1053,7 +1053,7 @@ function ExperienceAndPublications(props) {
                                                                                 id="letter_PI_pdf"
                                                                                 name="letter_PI_pdf"
                                                                                 type="text"
-                                                                                value={props.details[63].name}
+                                                                                value={props.details[63]}
                                                                                 readOnly
                                                                                 required
                                                                             />
@@ -1088,7 +1088,7 @@ function ExperienceAndPublications(props) {
                                                     <span style={{ color: "#ff0000" }}> *</span>
                                                 </label>
 
-                                                {!props.details[64].name && (
+                                                {!props.details[64] && (
                                                     <>
                                                         <input
                                                             className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -1148,7 +1148,7 @@ function ExperienceAndPublications(props) {
                                                     </>
                                                 )}
 
-                                                {props.details[64].name && (
+                                                {props.details[64] && (
                                                     <>
                                                         <div className="flex border-2 mt-1 w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                             <input
@@ -1156,7 +1156,7 @@ function ExperienceAndPublications(props) {
                                                                 id="sop_pdf"
                                                                 name="sop_pdf"
                                                                 type="text"
-                                                                value={props.details[64].name}
+                                                                value={props.details[64]}
                                                                 readOnly
                                                                 required
                                                             />
@@ -1182,6 +1182,7 @@ function ExperienceAndPublications(props) {
                                     <div className="px-4 bg-white sm:p-6 h-full flex flex-col justify-between items-center"> {/* Using flexbox to center the button */}
                                         <div className="my-4">
                                             <button
+                                                onClick={() => props.onSubmit()}
                                                 type="submit"
                                                 className="border border-transparent shadow-sm text-sm font-medium rounded-md text-white justify-center block py-2 px-4 mr-2 items-center bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                             >

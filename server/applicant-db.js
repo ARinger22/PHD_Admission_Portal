@@ -673,9 +673,12 @@ const save_application_info = async (req, res, next) => {
   let cycle_id = cycle.rows[0].cycle_id;
 
   var info = req.body;
-
+  page = JSON.parse(info.page)
+  stat = JSON.parse(info.stat)
+  let status_application = 0;
+  if(page === 5) status_application = 1;
   app_details = JSON.parse(info.applicant_details);
-
+  if(page === 1 && !stat){
   const app_save_result = await pool.query(
     "INSERT INTO applications_" +
     cycle_id +
@@ -689,7 +692,7 @@ const save_application_info = async (req, res, next) => {
         IEEE_ACM_Springer_journals,natn_itnl_journals,US_patents,Indian_patents,details_research_work,stat_of_purpose,\
         interdisciplinary_prog_check,mode_of_app,area_of_research,first_pref,second_pref,third_pref,fourth_pref,specific_research_area,bachelor_degree_complete,PI_Project_Number,\
         department_name, specialization_name, applying_for, offering_id,interdisciplinary_prog_name, status, status_remark) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12,$13,$14,$15,$16, $17 ,$18 ,$19 ,$20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, \
-        $42, $43, $44, $45, $46, $47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57, 1, '') RETURNING application_id;",
+        $42, $43, $44, $45, $46, $47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57, 0, '') RETURNING application_id;",
     [
       email,
       app_details[1],
@@ -750,7 +753,87 @@ const save_application_info = async (req, res, next) => {
       app_details[65],
     ]
   );
-
+  }
+  else{
+    let app_save_result = await pool.query(
+      "UPDATE applications_" +
+      cycle_id +
+      " SET email_id=$1, amount=$2, transaction_id=$3, bank=$4, date_of_transaction=$5, \
+      qualifying_examination_1=$6, branch_code_1=$7, year_1=$8, valid_upto_1=$9, all_india_rank_1=$10, score_1=$11, \
+      qualifying_examination_2=$12, branch_code_2=$13, year_2=$14, valid_upto_2=$15, all_india_rank_2=$16, score_2=$17, \
+      qualifying_examination_3=$18, branch_code_3=$19, year_3=$20, valid_upto_3=$21, all_india_rank_3=$22, score_3=$23, \
+      date_of_declaration=$24, place_of_declaration=$25, \
+      name_of_working_org_1=$26, designation_1=$27, duration_post_start_1=$28, duration_post_end_1=$29, nature_of_work_1=$30, \
+      name_of_working_org_2=$31, designation_2=$32, duration_post_start_2=$33, duration_post_end_2=$34, nature_of_work_2=$35, total_years_of_service=$36, \
+      IEEE_ACM_Springer_journals=$37, natn_itnl_journals=$38, US_patents=$39, Indian_patents=$40, details_research_work=$41, stat_of_purpose=$42, \
+      interdisciplinary_prog_check=$43, mode_of_app=$44, area_of_research=$45, first_pref=$46, second_pref=$47, third_pref=$48, fourth_pref=$49, specific_research_area=$50, bachelor_degree_complete=$51, PI_Project_Number=$52, \
+      department_name=$53, specialization_name=$54, applying_for=$55, offering_id=$56, interdisciplinary_prog_name=$57, status=$58, status_remark='' WHERE applications_" +
+      cycle_id +
+      ".email_id = $1 AND applications_" +
+      cycle_id +
+      ".offering_id = $56;",
+      [
+        email,
+        app_details[1],
+        app_details[2],
+        app_details[3],
+        app_details[4],
+        app_details[5],//qualifying exam_1
+        app_details[6],
+        app_details[7],
+        app_details[8],
+        app_details[9],
+        app_details[10],
+        app_details[11],
+        app_details[12],
+        app_details[13],
+        app_details[14],
+        app_details[15],
+        app_details[16],
+        app_details[17],
+        app_details[18],
+        app_details[19],
+        app_details[20],
+        app_details[21],
+        app_details[22],
+        app_details[23],//date_of_declaration
+        app_details[24],
+        app_details[25],
+        app_details[26],
+        app_details[27],
+        app_details[28],
+        app_details[29],
+        app_details[30],
+        app_details[31],
+        app_details[32],
+        app_details[33],
+        app_details[34],
+        app_details[35],
+        app_details[36],//IEEE
+        app_details[37],
+        app_details[38],
+        app_details[39],
+        app_details[40],
+        app_details[41],
+        app_details[42],
+        app_details[43],
+        app_details[44],
+        app_details[45],
+        app_details[46],
+        app_details[47],
+        app_details[48],
+        app_details[49],
+        app_details[50],
+        app_details[51],
+        app_details[52],
+        app_details[53],
+        app_details[54],
+        app_details[55],
+        app_details[65],
+        status_application
+      ]
+    );
+  }
   await pool.query(
     "UPDATE applications_" +
     cycle_id +
@@ -758,7 +841,7 @@ const save_application_info = async (req, res, next) => {
     full_name = a.full_name,guardian=a.guardian, fathers_name = a.fathers_name, profile_image_url = a.profile_image_url, \
     date_of_birth = a.date_of_birth, aadhar_card_number = a.aadhar_card_number, category = a.category, \
     category_certificate_url = a.category_certificate_url, is_pwd = a.is_pwd,pwd_type=a.pwd_type,pwd_url=a.pwd_url, blood_group=a.blood_group, marital_status = a.marital_status, \
-    spouse_name=a.spouse_name, spouse_occupation=a.spouse_occupation,nationality = a.nationality, gender = a.gender, advertisement=a.advertisement,\
+    spouse_name=a.spouse_name, spouse_occupation=a.spouse_occupation,nationality = a.nationality, gender = a.gender, status_student = a.status_student, advertisement=a.advertisement,\
     communication_address = a.communication_address, communication_city = a.communication_city, \
     communication_state = a.communication_state, communication_pincode = a.communication_pincode, \
     permanent_address = a.permanent_address, permanent_city = a.permanent_state, \
@@ -769,8 +852,8 @@ const save_application_info = async (req, res, next) => {
     remarks_10th = a.remarks_10th, marksheet_10th_url = a.marksheet_10th_url, \
     degree_12th = a.degree_12th, board_12th = a.board_12th, percentage_cgpa_format_12th = a.percentage_cgpa_format_12th, \
     percentage_cgpa_value_12th = a.percentage_cgpa_value_12th, year_of_passing_12th = a.year_of_passing_12th, \
-    remarks_12th = a.remarks_12th, marksheet_12th_url = a.marksheet_12th_url,  degrees = a.degrees, \
-    other_remarks = a.other_remarks, is_last_degree_completed = a.is_last_degree_completed \
+    remarks_12th = a.remarks_12th, marksheet_12th_url = a.marksheet_12th_url,  degrees = a.degrees, degrees2 = a.degrees2, \
+    other_remarks = a.other_remarks, other_remarks2 = a.other_remarks2, is_last_degree_completed = a.is_last_degree_completed, is_last_job_completed = a.is_last_job_completed \
     FROM applicants as a WHERE a.email_id = $1 AND applications_" +
     cycle_id +
     ".email_id = a.email_id AND applications_" +
@@ -880,10 +963,13 @@ const save_application_info = async (req, res, next) => {
   let spec = offering_details.rows[0].specialization;
 
   /** Get application ID */
-  let app_id = app_save_result.rows[0].application_id;
-
   /** Email application submission */
-  auth.application_submission(email, app_id, dep, spec);
+  let app_id = await pool.query(
+    `SELECT application_id FROM applications_${cycle_id} WHERE email_id = $1 LIMIT 1`,
+    [email]
+  );
+  /** Email application submission */
+  if(page === 6) auth.application_submission(email, app_id, dep, spec);
 
   Promise.allSettled(promises).then(res.status(200).send("Ok"));
 };
@@ -1070,7 +1156,7 @@ const get_applications = async (req, res) => {
     "SELECT application_id, " +
     "phd_offerings_" +
     cycle_id +
-    ".offering_id, deadline, offering_type, department, specialization, status, status_remark, is_result_published, is_accepting_applications FROM applications_" +
+    ".offering_id, deadline, offering_type, department, specialization, status, status_remark, is_result_published, is_accepting_applications, status_student FROM applications_" +
     cycle_id +
     ", phd_offerings_" +
     cycle_id +
@@ -1194,27 +1280,36 @@ const reapply_save_application_info = async (req, res, next) => {
   app_details = JSON.parse(info.applicant_details);
   /*Delete application using Email ID and Offering ID*/
   
-  const results = await pool.query(
-    "DELETE from applications_" +
-    cycle_id +
-    " WHERE email_id = $1 AND offering_id = $2",
-    [email, app_details[55]]
-  );
+  page = JSON.parse(info.page)
+  stat = JSON.parse(info.stat)
+  let status_application = 0;
+  if(page === 5) status_application = 1;
+
+  // const results = await pool.query(
+  //   "DELETE from applications_" +
+  //   cycle_id +
+  //   " WHERE email_id = $1 AND offering_id = $2",
+  //   [email, app_details[55]]
+  // );
+  
 
   const app_save_result = await pool.query(
-    "INSERT INTO applications_" +
+    "UPDATE applications_" +
     cycle_id +
-    "(email_id, amount, transaction_id, bank, date_of_transaction, \
-        qualifying_examination_1,branch_code_1, year_1,valid_upto_1,all_india_rank_1,score_1, \
-        qualifying_examination_2,branch_code_2, year_2,valid_upto_2,all_india_rank_2,score_2, \
-        qualifying_examination_3,branch_code_3, year_3,valid_upto_3,all_india_rank_3,score_3, \
-        date_of_declaration, place_of_declaration,\
-        name_of_working_org_1,designation_1,duration_post_start_1,duration_post_end_1,nature_of_work_1,\
-        name_of_working_org_2,designation_2,duration_post_start_2,duration_post_end_2,nature_of_work_2,total_years_of_service,\
-        IEEE_ACM_Springer_journals,natn_itnl_journals,US_patents,Indian_patents,details_research_work,stat_of_purpose,\
-        interdisciplinary_prog_check,mode_of_app,area_of_research,first_pref,second_pref,third_pref,fourth_pref,specific_research_area,bachelor_degree_complete,PI_Project_Number,\
-        department_name, specialization_name, applying_for, offering_id,interdisciplinary_prog_name, status, status_remark) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12,$13,$14,$15,$16, $17 ,$18 ,$19 ,$20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, \
-        $42, $43, $44, $45, $46, $47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57, 1, '') RETURNING application_id;",
+    " SET email_id=$1, amount=$2, transaction_id=$3, bank=$4, date_of_transaction=$5, \
+    qualifying_examination_1=$6, branch_code_1=$7, year_1=$8, valid_upto_1=$9, all_india_rank_1=$10, score_1=$11, \
+    qualifying_examination_2=$12, branch_code_2=$13, year_2=$14, valid_upto_2=$15, all_india_rank_2=$16, score_2=$17, \
+    qualifying_examination_3=$18, branch_code_3=$19, year_3=$20, valid_upto_3=$21, all_india_rank_3=$22, score_3=$23, \
+    date_of_declaration=$24, place_of_declaration=$25, \
+    name_of_working_org_1=$26, designation_1=$27, duration_post_start_1=$28, duration_post_end_1=$29, nature_of_work_1=$30, \
+    name_of_working_org_2=$31, designation_2=$32, duration_post_start_2=$33, duration_post_end_2=$34, nature_of_work_2=$35, total_years_of_service=$36, \
+    IEEE_ACM_Springer_journals=$37, natn_itnl_journals=$38, US_patents=$39, Indian_patents=$40, details_research_work=$41, stat_of_purpose=$42, \
+    interdisciplinary_prog_check=$43, mode_of_app=$44, area_of_research=$45, first_pref=$46, second_pref=$47, third_pref=$48, fourth_pref=$49, specific_research_area=$50, bachelor_degree_complete=$51, PI_Project_Number=$52, \
+    department_name=$53, specialization_name=$54, applying_for=$55, offering_id=$56, interdisciplinary_prog_name=$57, status=$58, status_remark='' WHERE applications_" +
+    cycle_id +
+    ".email_id = $1 AND applications_" +
+    cycle_id +
+    ".offering_id = $56;",
     [
       email,
       app_details[1],
@@ -1273,6 +1368,7 @@ const reapply_save_application_info = async (req, res, next) => {
       app_details[54],
       app_details[55],
       app_details[65],
+      status_application
     ]
   );
 
@@ -1283,7 +1379,7 @@ const reapply_save_application_info = async (req, res, next) => {
     full_name = a.full_name,guardian=a.guardian, fathers_name = a.fathers_name, profile_image_url = a.profile_image_url, \
     date_of_birth = a.date_of_birth, aadhar_card_number = a.aadhar_card_number, category = a.category, \
     category_certificate_url = a.category_certificate_url, is_pwd = a.is_pwd,pwd_type=a.pwd_type,pwd_url=a.pwd_url, blood_group=a.blood_group, marital_status = a.marital_status, \
-    spouse_name=a.spouse_name, spouse_occupation=a.spouse_occupation,nationality = a.nationality, gender = a.gender, advertisement=a.advertisement,\
+    spouse_name=a.spouse_name, spouse_occupation=a.spouse_occupation,nationality = a.nationality, gender = a.gender, status_student = a.status_student, advertisement=a.advertisement,\
     communication_address = a.communication_address, communication_city = a.communication_city, \
     communication_state = a.communication_state, communication_pincode = a.communication_pincode, \
     permanent_address = a.permanent_address, permanent_city = a.permanent_state, \
@@ -1294,8 +1390,8 @@ const reapply_save_application_info = async (req, res, next) => {
     remarks_10th = a.remarks_10th, marksheet_10th_url = a.marksheet_10th_url, \
     degree_12th = a.degree_12th, board_12th = a.board_12th, percentage_cgpa_format_12th = a.percentage_cgpa_format_12th, \
     percentage_cgpa_value_12th = a.percentage_cgpa_value_12th, year_of_passing_12th = a.year_of_passing_12th, \
-    remarks_12th = a.remarks_12th, marksheet_12th_url = a.marksheet_12th_url,  degrees = a.degrees, \
-    other_remarks = a.other_remarks, is_last_degree_completed = a.is_last_degree_completed \
+    remarks_12th = a.remarks_12th, marksheet_12th_url = a.marksheet_12th_url,  degrees = a.degrees, degrees2=a.degrees2, \
+    other_remarks = a.other_remarks, other_remarks2=a.other_remarks2, is_last_degree_completed = a.is_last_job_completed , is_last_job_completed=a.is_last_job_completed \
     FROM applicants as a WHERE a.email_id = $1 AND applications_" +
     cycle_id +
     ".email_id = a.email_id AND applications_" +
@@ -1407,10 +1503,12 @@ const reapply_save_application_info = async (req, res, next) => {
   let spec = offering_details.rows[0].specialization;
 
   /** Get application ID */
-  let app_id = app_save_result.rows[0].application_id;
-
+  let app_id = await pool.query(
+    `SELECT application_id FROM applications_${cycle_id} WHERE email_id = $1 LIMIT 1`,
+    [email]
+  );
   /** Email application submission */
-  auth.application_submission(email, app_id, dep, spec);
+  if(page === 6) auth.application_submission(email, app_id, dep, spec);
 
   Promise.allSettled(promises).then(res.status(200).send("Ok"));
 };
@@ -1504,6 +1602,14 @@ const reapply_check_applicant_info = async (req, res) => {
     " WHERE offering_id = $1 AND email_id = $2;",
     [offering_id, email]
   );
+
+  const previous_info = await pool.query(
+    "SELECT * from applications_" +
+    cycle_id +
+    " WHERE offering_id = $1 AND email_id = $2;",
+    [offering_id, email]
+  );
+
   let application_filled_check_data = application_filled_check.rows;
 
   if (application_filled_check_data.length === 0) {
@@ -1534,6 +1640,7 @@ const reapply_check_applicant_info = async (req, res) => {
   }
 
   return res.send({
+    previous_info : previous_info,
     full_name: results.rows[0].full_name,
     category: results.rows[0].category,
     category_fees: category_fees,
