@@ -262,10 +262,6 @@ export default function PersonalInfo(props) {
                                 />
                                 <div style={{ "margin-top": "10px" }}>
                                   {nameAlert && (
-                                    <Alert severity="warning">
-                                      Please use capital and small English
-                                      letters (i.e. a-z, A-Z)
-                                    </Alert>
                                     <Alert severity="warning">Please use capital and small English letters (i.e. a-z, A-Z)</Alert>
                                   )}
                                 </div>
@@ -426,9 +422,6 @@ export default function PersonalInfo(props) {
                                   value={props.localProfileInfo.date_of_birth}
                                 />
                                 {dobAlert && (
-                                  <Alert severity="warning">
-                                    Please use valid D.O.B.
-                                  </Alert>
                                   <Alert severity="warning">Please use valid D.O.B.</Alert>
                                 )}
                               </div>
@@ -784,11 +777,6 @@ export default function PersonalInfo(props) {
                                 />
                                 <div style={{ "margin-top": "10px" }}>
                                   {marAlert && (
-                                    <Alert severity="warning">
-                                      Please use these bloods only: 'O+', 'O-',
-                                      'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-',
-                                      'Other'
-                                    </Alert>
                                     <Alert severity="warning">Please use these bloods only: 'O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'Other'</Alert>
                                   )}
                                 </div>
